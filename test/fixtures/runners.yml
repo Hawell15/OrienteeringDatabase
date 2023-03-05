@@ -1,0 +1,29 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  runner_name: MyString
+  surname: MyString
+  dob: 2023-03-05
+  club: 
+  gender: MyString
+  wre_id: 1
+  best_category: 
+  category: 
+  category_valid: 2023-03-05
+  sprint_wre_rang: 1
+  forrest_wre_rang: 1
+  checksum: MyString
+
+two:
+  runner_name: MyString
+  surname: MyString
+  dob: 2023-03-05
+  club: 
+  gender: MyString
+  wre_id: 1
+  best_category: 
+  category: 
+  category_valid: 2023-03-05
+  sprint_wre_rang: 1
+  forrest_wre_rang: 1
+  checksum: MyString

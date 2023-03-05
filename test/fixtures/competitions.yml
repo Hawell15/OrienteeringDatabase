@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  competition_name: MyString
+  date: 2023-03-05
+  location: MyString
+  country: MyString
+  type: 
+  wre_id: 1
+  checksum: MyString
+
+two:
+  competition_name: MyString
+  date: 2023-03-05
+  location: MyString
+  country: MyString
+  type: 
+  wre_id: 1
+  checksum: MyString

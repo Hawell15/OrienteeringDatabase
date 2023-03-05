@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Runner name:</strong>
+  <%= @runner.runner_name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @runner.surname %>
+</p>
+
+<p>
+  <strong>Dob:</strong>
+  <%= @runner.dob %>
+</p>
+
+<p>
+  <strong>Club:</strong>
+  <%= @runner.club %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @runner.gender %>
+</p>
+
+<p>
+  <strong>Wre:</strong>
+  <%= @runner.wre_id %>
+</p>
+
+<p>
+  <strong>Best category:</strong>
+  <%= @runner.best_category %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @runner.category %>
+</p>
+
+<p>
+  <strong>Category valid:</strong>
+  <%= @runner.category_valid %>
+</p>
+
+<p>
+  <strong>Sprint wre rang:</strong>
+  <%= @runner.sprint_wre_rang %>
+</p>
+
+<p>
+  <strong>Forrest wre rang:</strong>
+  <%= @runner.forrest_wre_rang %>
+</p>
+
+<p>
+  <strong>Checksum:</strong>
+  <%= @runner.checksum %>
+</p>
+
+<%= link_to 'Edit', edit_runner_path(@runner) %> |
+<%= link_to 'Back', runners_path %>

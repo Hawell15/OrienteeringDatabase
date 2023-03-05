@@ -1,0 +1,77 @@
+<%= form_with(model: runner) do |form| %>
+  <% if runner.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(runner.errors.count, "error") %> prohibited this runner from being saved:</h2>
+
+      <ul>
+        <% runner.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :runner_name %>
+    <%= form.text_field :runner_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :surname %>
+    <%= form.text_field :surname %>
+  </div>
+
+  <div class="field">
+    <%= form.label :dob %>
+    <%= form.date_select :dob %>
+  </div>
+
+  <div class="field">
+    <%= form.label :club %>
+    <%= form.text_field :club %>
+  </div>
+
+  <div class="field">
+    <%= form.label :gender %>
+    <%= form.text_field :gender %>
+  </div>
+
+  <div class="field">
+    <%= form.label :wre_id %>
+    <%= form.number_field :wre_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :best_category %>
+    <%= form.text_field :best_category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category %>
+    <%= form.text_field :category %>
+  </div>
+
+  <div class="field">
+    <%= form.label :category_valid %>
+    <%= form.date_select :category_valid %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sprint_wre_rang %>
+    <%= form.number_field :sprint_wre_rang %>
+  </div>
+
+  <div class="field">
+    <%= form.label :forrest_wre_rang %>
+    <%= form.number_field :forrest_wre_rang %>
+  </div>
+
+  <div class="field">
+    <%= form.label :checksum %>
+    <%= form.text_field :checksum %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
