@@ -1,0 +1,17 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/digest-3.1.1/ext/digest/sha2
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.5.9/lib/ruby/site_ruby/2.5.0 -r ./siteconf20230305-53127-pzlex7.rb extconf.rb
+checking for CommonCrypto/CommonDigest.h... yes
+checking for sys/cdefs.h... yes
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/digest-3.1.1/ext/digest/sha2
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/digest-3.1.1/ext/digest/sha2
+make "DESTDIR="
+compiling sha2init.c
+linking shared-object digest/sha2.bundle
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/digest-3.1.1/ext/digest/sha2
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 sha2.bundle ./.gem.20230305-53127-6cn4e1/digest
