@@ -1,9 +1,20 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[ show edit update destroy]
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = if params[:comp_id]
+      Group.where(competition_id: params[:comp_id])
+    else
+      Group.all
+    end
+
+    @groups = case params[:sort]
+    when  "competition_name", "date"
+      @groups.sort_by {|group| group.competition.send(params[:sort]) }
+    else
+      @groups.order("#{params[:sort]}")
+    end
   end
 
   # GET /groups/1 or /groups/1.json
@@ -21,7 +32,12 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-    @group = Group.new(group_params)
+      new_params = group_params
+      new_params[:competition_id] = new_params[:competition_id] = add_competition(new_params).id
+      # new_params[:date] = "#{new_params["date(1i)"]}-#{new_params["date(2i)"]}-#{new_params["date(3i)"]}"
+
+      # new_params[:competition_id] = Competition.create( new_params.slice(:competition_name, :date, :location, :country, :distance_type, :wre_id)).id
+    @group = Group.new(new_params.slice(:group_name, :rang, :clasa, :competition_id))
 
     respond_to do |format|
       if @group.save
@@ -57,6 +73,10 @@ class GroupsController < ApplicationController
     end
   end
 
+  def get_competitions
+
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_group
@@ -65,6 +85,6 @@ class GroupsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:group_name, :competition, :rang)
+      params.require(:group).permit(:group_name, :competition_id, :rang, :clasa, :competition_name, :distance_type, :wre_id, :location, :country, :date)
     end
 end

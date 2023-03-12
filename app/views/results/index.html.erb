@@ -1,17 +1,18 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Results</h1>
+<h1 style="text-align:center; color:green">Rezultate</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Place</th>
-      <th>Runner</th>
-      <th>Time</th>
-      <th>Category</th>
-      <th>Group</th>
-      <th>Wre points</th>
-      <th colspan="3"></th>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-primary">
+     <tr>
+      <th scope="col"> <%= link_to 'Locul',  sort: "place" %></th>
+      <th><%= link_to 'Sportiv', sort: "runner"%></th>
+      <th><%= link_to 'Timpul', sort: "time" %></th>
+      <th><%= link_to 'Categoria indeplinita', sort: "category_id" %></th>
+      <th><%= link_to 'Competitia', sort: "competition" %></th>
+      <th><%= link_to 'Grupa', sort: "group" %></th>
+      <th><%= link_to 'Wre Puncte', sort: "wre_points" %></th>
+      <th colspan="3">Acțiuni</th>
     </tr>
   </thead>
 
@@ -19,14 +20,21 @@
     <% @results.each do |result| %>
       <tr>
         <td><%= result.place %></td>
-        <td><%= result.runner_id %></td>
-        <td><%= result.time %></td>
-        <td><%= result.category_id %></td>
-        <td><%= result.group_id %></td>
+        <td><%= link_to "#{result.runner.runner_name} #{result.runner.surname}", result.runner  %></td>
+        <td><%= Time.at(result.time).utc.strftime('%H:%M:%S') %></td>
+        <td><%= result.category.category_name %></td>
+        <td><%= link_to "#{result.group.competition.competition_name} #{result.group.competition.date.year}", result.group.competition %></td>
+        <td><%= link_to result.group.group_name, result.group %></td>
         <td><%= result.wre_points %></td>
-        <td><%= link_to 'Show', result %></td>
-        <td><%= link_to 'Edit', edit_result_path(result) %></td>
-        <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><div class="btn-group" role="group" aria-label="Basic example">
+          <%= link_to 'Arată', result, class: "btn btn-warning btn-sm"%>
+        <% if user_signed_in? %>
+          <%= link_to 'Editează', edit_polymorphic_path(result), class: "btn btn-success btn-sm"%>
+          <%= link_to 'Șterge', result, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        <% end %>
+
+</div></td>
+
       </tr>
     <% end %>
   </tbody>
@@ -34,4 +42,6 @@
 
 <br>
 
-<%= link_to 'New Result', new_result_path %>
+<% if user_signed_in? %>
+<%= link_to 'Rezultat Nou', new_result_path, class: "btn btn-info" %>
+<% end %>

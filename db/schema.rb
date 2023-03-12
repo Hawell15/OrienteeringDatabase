@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_05_121554) do
+ActiveRecord::Schema.define(version: 2023_03_10_053803) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 2023_03_05_121554) do
     t.date "date"
     t.string "location"
     t.string "country"
-    t.string "type"
+    t.string "distance_type"
     t.integer "wre_id"
     t.string "checksum"
     t.datetime "created_at", precision: 6, null: false
@@ -48,13 +48,14 @@ ActiveRecord::Schema.define(version: 2023_03_05_121554) do
     t.integer "rang"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "clasa"
     t.index ["competition_id"], name: "index_groups_on_competition_id"
   end
 
   create_table "results", force: :cascade do |t|
     t.integer "place"
     t.integer "runner_id", null: false
-    t.time "time"
+    t.integer "time"
     t.integer "category_id", null: false
     t.integer "group_id", null: false
     t.integer "wre_points"

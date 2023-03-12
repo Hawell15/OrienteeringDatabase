@@ -1,77 +1,147 @@
 <%= form_with(model: runner) do |form| %>
-  <% if runner.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(runner.errors.count, "error") %> prohibited this runner from being saved:</h2>
-
-      <ul>
+<% if runner.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(runner.errors.count, "error") %> prohibited this runner from being saved:</h2>
+    <ul>
         <% runner.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <li>
+            <%= error.full_message %>
+        </li>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :runner_name %>
-    <%= form.text_field :runner_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :surname %>
-    <%= form.text_field :surname %>
-  </div>
-
-  <div class="field">
-    <%= form.label :dob %>
-    <%= form.date_select :dob %>
-  </div>
-
-  <div class="field">
-    <%= form.label :club %>
-    <%= form.text_field :club %>
-  </div>
-
-  <div class="field">
-    <%= form.label :gender %>
-    <%= form.text_field :gender %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wre_id %>
-    <%= form.number_field :wre_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :best_category %>
-    <%= form.text_field :best_category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category %>
-    <%= form.text_field :category %>
-  </div>
-
-  <div class="field">
-    <%= form.label :category_valid %>
-    <%= form.date_select :category_valid %>
-  </div>
-
-  <div class="field">
-    <%= form.label :sprint_wre_rang %>
-    <%= form.number_field :sprint_wre_rang %>
-  </div>
-
-  <div class="field">
-    <%= form.label :forrest_wre_rang %>
-    <%= form.number_field :forrest_wre_rang %>
-  </div>
-
-  <div class="field">
-    <%= form.label :checksum %>
-    <%= form.text_field :checksum %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    </ul>
+</div>
 <% end %>
+<div class="row">
+    <div class="col">
+        <%= form.text_field :runner_name, placeholder: "Numele", class: "form-control"  %>
+    </div>
+    <div class="col">
+        <%= form.text_field :surname, placeholder: "Prenumele", class: "form-control"  %>
+    </div>
+    <div class="col">
+        <%= form.select :club_id,  options_for_select(Club.all.map { |club| [club.club_name, club.id] }), {},{class: "form-select form-group form-control"} %>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <%= form.label :dob ,'Data Nasterii'%>
+        <%= form.date_select :date, {order: [:day, :month, :year], use_month_numbers: true, end_year: Date.today.year, start_year: 1940 } , class: "date-select" %>
+    </div>
+    <div class="col">
+        <%= form.label :gender ,'Genul'%>
+        <%= form.select :gender, ["M", "F"] , {}, class: "date-select" %>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <%= form.text_field :id, placeholder: "FOS ID", class: "form-control"  %>
+    </div>
+    <div class="col">
+        <%= form.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <%= form.label :gender ,'Titlul Sportiv'%>
+        <%= form.select :best_category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }), {},{class: "form-select form-group form-control"} %>
+    </div>
+    <div class="col">
+        <%= form.label :gender ,'Categoria Sportiva'%>
+        <%= form.select :category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }), {},{class: "form-select form-group form-control", onChange: "result_visibility()"} %>
+    </div>
+</div>
+<div id="create-result" style="display: none">
+    <div class="row">
+        <div class="col">
+            <%= form.label :competition_id ,'Competitia'%>
+            <%= form.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control", onChange: "competition_visibility()"} %>
+        </div>
+        <div class="col" style="display: none">
+            <%= form.label :group_id ,'Grupa'%>
+            <%= form.select :group_id,[], {},{class: "form-select form-group form-control", onChange: "group_visibility()"} %>
+            <!-- <%= form.text_field :group_name, placeholder: "Numele Grupei", class: "form-control"  %> -->
+        </div>
+        <div class="col">
+            <%= form.label :group_name ,'Grupa'%>
+            <%= form.text_field :group_name, placeholder: "Grupa", class: "form-control"  %>
+        </div>
+    </div>
+    <br>
+    <div id="create-competition" style="display: none">
+        <div class="row">
+            <div class="col">
+                <%= form.text_field :competition_name, placeholder: "Numele Competitiei", class: "form-control"  %>
+            </div>
+            <div class="col">
+                <%= form.text_field :distance_type, placeholder: "Tipul Distantei", class: "form-control"  %>
+            </div>
+            <div class="col">
+                <%= form.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <%= form.label :date ,'Data'%>
+                <%= form.date_select :date, {order: [:day, :month, :year], use_month_numbers: true} , class: "date-select" %>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col">
+                <%= form.text_field :location, placeholder: "Localitatea", class: "form-control"  %>
+            </div>
+            <div class="col">
+                <%= form.text_field :country, placeholder: "Tara", class: "form-control"  %>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="row">
+        <div class="col">
+            <%= form.number_field :place, placeholder: "Locul", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= form.number_field :wre_points, placeholder: "WRE Puncte", class: "form-control"  %>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <%= form.number_field :hours, placeholder: "Ore", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= form.number_field :minutes, placeholder: "Minute", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= form.number_field :seconds, placeholder: "Secunde", class: "form-control"  %>
+        </div>
+    </div>
+</div>
+<div class="actions">
+    <%= form.submit class: "btn btn-success btn-sm"%>
+    <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
+</div>
+<% end %>
+<script>
+$(document).ready(function() {
+    $('#runner_competition_id').on('change', function() {
+        var id = $(this).val();
+        var url = '/groups.json?comp_id=' + id;
+
+        $.get(url, function(data) {
+            var select = $('#runner_group_id');
+            select.find('option').remove();
+
+            $.each(data, function(index, item) {
+                select.append('<option value="' + item.id + '">' + item.group_name + '</option>');
+            });
+            select.append('<option value>' + "Grupa Noua" + '</option>');
+        });
+    });
+});
+</script>

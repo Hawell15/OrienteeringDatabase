@@ -11,32 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :club_name %>
-    <%= form.text_field :club_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :territory %>
-    <%= form.text_field :territory %>
+   <div class="row">
+  <div class="col">
+     <%= form.text_field :club_name, placeholder: "Numele Clubului", class: "form-control"  %>
   </div>
-
-  <div class="field">
-    <%= form.label :representative %>
-    <%= form.text_field :representative %>
+  <div class="col">
+     <%= form.text_field :territory, placeholder: "Teritoriu", class: "form-control"  %>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+     <%= form.text_field :representative, placeholder: "Representant", class: "form-control"  %>
   </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
+</div>
+<br>
+<div class="row">
+  <div class="col">
+     <%= form.text_field :phone, placeholder: "Telefon", class: "form-control"  %>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="col">
+     <%= form.text_field :email, placeholder: "Email", class: "form-control"  %>
   </div>
+</div>
+<br>
+ <div class="actions">
+    <%= form.submit class: "btn btn-success btn-sm"%>
+    <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
+</div>
 <% end %>

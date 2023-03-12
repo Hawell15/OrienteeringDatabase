@@ -1,9 +1,22 @@
 class RunnersController < ApplicationController
+  require "#{Rails.root}/app/data/runner_data.rb"
+
   before_action :set_runner, only: %i[ show edit update destroy ]
 
   # GET /runners or /runners.json
   def index
-    @runners = Runner.all
+    if params[:category]
+       @runners = Runner.all.all.where(category_id: params[:category])
+     else
+      @runners = Runner.all
+    end
+
+    @runners = case params[:sort]
+    when "runner"
+      @runners.sort_by { |runner| "#{runner.runner_name} #{runner.surname}" }
+    else
+      @runners.order("#{params[:sort]}")
+    end
   end
 
   # GET /runners/1 or /runners/1.json

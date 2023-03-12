@@ -3,7 +3,18 @@ class ResultsController < ApplicationController
 
   # GET /results or /results.json
   def index
-    @results = Result.all
+     @results = case params[:sort]
+      when "runner"
+      Result.all.sort_by { |result| "#{result.runner.runner_name} #{result.runner.surname}" }
+    when "competition"
+       Result.all.sort_by { |result| "#{result.group.competition.competition_name} #{result.group.competition.date.year}" }
+     when "group"
+            Result.all.sort_by { |result| result.group.group_name }
+    else
+      Result.order("#{params[:sort]}")
+    end
+
+    # @results = Result.all
   end
 
   # GET /results/1 or /results/1.json

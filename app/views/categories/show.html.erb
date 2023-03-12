@@ -1,19 +1,63 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Category name:</strong>
-  <%= @category.category_name %>
+<p id="notice">
+    <%= notice %>
 </p>
+<div class="mt-4 p-5 bg-light text-black rounded --bs-gray-500">
+    <h1>
+        <%= @category.full_name %>
+    </h1>
+    <p>
+        <strong>Denumire:</strong>
+        <%= @category.category_name %>
+    </p>
+    <hr class="my-4">
+    <p>
+        <strong>Puncte</strong>
+        <%= @category.points %>
+    </p>
+    <p>
+        <strong>Numarul de sportivi:</strong>
+        <%= link_to @category.runners.count, runners_path(category: @category.id) %>
+    </p>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+            <th scope="col">
+                <%= link_to 'FOS ID' %>
+            </th>
+            <th>
+                <%= link_to 'Nume' %>
+            </th>
+            <th>
+                <%= link_to 'Club' %>
+            </th>
+            <th>
+                <%= link_to 'Categorie Valida' %>
+            </th>
+        </thead>
+        <tbody>
+            <% @category.runners.order(:category_valid).each do |runner| %>
+            <tr>
+                <td>
+                    <%= runner.id %>
+                </td>
+                <td>
+                    <%= "#{runner.runner_name} #{runner.surname}" %>
+                </td>
+                <td>
+                    <%= link_to runner.club&.club_name, runner.club %>
+                </td>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @category.full_name %>
-</p>
-
-<p>
-  <strong>Points:</strong>
-  <%= @category.points %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+                <td>
+                    <%= runner.category_valid&.strftime("%d/%m/%Y") %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <p class="lead">
+        <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_polymorphic_path(@category), class: "btn btn-success btn-sm" %>
+        <%= link_to 'Delete', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        <% end %>
+        <%= link_to 'Back', request.referer, class: "btn btn-secondary btn-sm" %>
+    </p>
+</div>

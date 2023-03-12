@@ -1,52 +1,47 @@
 <%= form_with(model: competition) do |form| %>
-  <% if competition.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
-
-      <ul>
+<% if competition.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(competition.errors.count, "error") %> prohibited this competition from being saved:</h2>
+    <ul>
         <% competition.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <li>
+            <%= error.full_message %>
+        </li>
         <% end %>
-      </ul>
+    </ul>
+</div>
+<% end %>
+<div class="row">
+    <div class="col">
+        <%= form.text_field :competition_name, placeholder: "Numele Competitiei", class: "form-control"  %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :competition_name %>
-    <%= form.text_field :competition_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.date_select :date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.text_field :location %>
-  </div>
-
-  <div class="field">
-    <%= form.label :country %>
-    <%= form.text_field :country %>
-  </div>
-
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.text_field :type %>
-  </div>
-
-  <div class="field">
-    <%= form.label :wre_id %>
-    <%= form.number_field :wre_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :checksum %>
-    <%= form.text_field :checksum %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="col">
+        <%= form.text_field :distance_type, placeholder: "Tipul Distantei", class: "form-control"  %>
+    </div>
+    <div class="col">
+        <%= form.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <%= form.label :date ,'Data'%>
+        <%= form.date_select :date, class: "form-control"%>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <%= form.text_field :location, placeholder: "Localitatea", class: "form-control"  %>
+    </div>
+    <div class="col">
+        <%= form.text_field :country, placeholder: "Tara", class: "form-control"  %>
+    </div>
+</div>
+<br>
+<div class="actions">
+    <%= form.submit class: "btn btn-success btn-sm"%>
+    <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
+</div>
 <% end %>

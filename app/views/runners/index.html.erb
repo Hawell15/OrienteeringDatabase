@@ -1,44 +1,45 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Runners</h1>
+<h1 style="text-align:center; color:green">Sportivi</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Runner name</th>
-      <th>Surname</th>
-      <th>Dob</th>
-      <th>Club</th>
-      <th>Gender</th>
-      <th>Wre</th>
-      <th>Best category</th>
-      <th>Category</th>
-      <th>Category valid</th>
-      <th>Sprint wre rang</th>
-      <th>Forrest wre rang</th>
-      <th>Checksum</th>
-      <th colspan="3"></th>
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-primary">
+     <tr>
+      <% query_hash = { category: params["category"] }%>
+      <th scope="col"> <%= link_to 'FOS ID',  query_hash.merge(sort: "id") %></th>
+      <th><%= link_to 'Nume', query_hash.merge(sort: "runner") %></th>
+      <th><%= link_to 'Genul', query_hash.merge(sort: "gender") %></th>
+      <th><%= link_to 'Data Nastere', query_hash.merge(sort: "dob") %></th>
+      <th><%= link_to 'Club', query_hash.merge(sort: "club_id") %></th>
+      <th><%= link_to 'Titlul Sportiv', query_hash.merge(sort: "best_category_id") %></th>
+      <th><%= link_to 'Categorie Valida', query_hash.merge(sort: "category_id") %></th>
+      <th><%= link_to 'Valabilitate ', query_hash.merge(sort: "category_valid") %></th>
+      <th><%= link_to 'WRE ID', query_hash.merge(sort: "wre_id") %></th>
+      <th><%= link_to 'Sprint WRE Ranking', query_hash.merge(sort: "sprint_wre_rang") %></th>
+      <th><%= link_to 'Padure WRE Ranking', query_hash.merge(sort: "forrest_wre_rang") %></th>
+      <th colspan="3">Acțiuni</th>
     </tr>
   </thead>
 
   <tbody>
     <% @runners.each do |runner| %>
       <tr>
-        <td><%= runner.runner_name %></td>
-        <td><%= runner.surname %></td>
-        <td><%= runner.dob %></td>
-        <td><%= runner.club %></td>
+        <td><%= runner.id %></td>
+        <td><%= "#{runner.runner_name} #{runner.surname}" %></td>
         <td><%= runner.gender %></td>
+        <td><%= runner.dob.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to runner.club&.club_name, runner.club %></td>
+        <td><%= Category.find_by_id(runner.best_category_id)&.category_name %></td>
+        <td><%= runner.category.category_name %></td>
+        <td><%= runner.category_valid&.strftime("%d/%m/%Y") %></td>
         <td><%= runner.wre_id %></td>
-        <td><%= runner.best_category %></td>
-        <td><%= runner.category %></td>
-        <td><%= runner.category_valid %></td>
         <td><%= runner.sprint_wre_rang %></td>
         <td><%= runner.forrest_wre_rang %></td>
-        <td><%= runner.checksum %></td>
-        <td><%= link_to 'Show', runner %></td>
-        <td><%= link_to 'Edit', edit_runner_path(runner) %></td>
-        <td><%= link_to 'Destroy', runner, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Arată', runner, class: "btn btn-warning btn-sm"%></td>
+        <% if user_signed_in? %>
+          <td><%= link_to 'Editează', edit_polymorphic_path(runner), class: "btn btn-success btn-sm"%></td>
+          <td><%= link_to 'Șterge', runner, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -46,4 +47,6 @@
 
 <br>
 
-<%= link_to 'New Runner', new_runner_path %>
+<% if user_signed_in? %>
+<%= link_to 'Sportiv Nou', new_runner_path, class: "btn btn-info" %>
+<% end %>

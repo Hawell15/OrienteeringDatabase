@@ -1,32 +1,68 @@
 <%= form_with(model: group) do |form| %>
-  <% if group.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
+<% if group.errors.any? %>
+<div id="error_explanation">
+    <h2>
+        <%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
+    <ul>
         <% group.errors.each do |error| %>
-          <li><%= error.full_message %></li>
+        <li>
+            <%= error.full_message %>
+        </li>
         <% end %>
-      </ul>
+    </ul>
+</div>
+<% end %>
+<div class="row">
+    <div class="col">
+        <%= form.text_field :group_name, placeholder: "Numele Grupei", class: "form-control"  %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :group_name %>
-    <%= form.text_field :group_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :competition %>
-    <%= form.text_field :competition %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rang %>
-    <%= form.number_field :rang %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="col">
+        <%= form.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control", onChange: "competition_visibility()"} %>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col">
+        <%= form.text_field :rang, placeholder: "Rang", class: "form-control"  %>
+    </div>
+    <div class="col">
+        <%= form.select :clasa,  ["Seniori", "Juniori", "MSRM", "CMSRM"], {},{class: "form-select form-group form-control"} %>
+    </div>
+</div>
+<br>
+<div id="create-competition" style="display: none">
+    <div class="row">
+        <div class="col">
+            <%= form.text_field :competition_name, placeholder: "Numele Competitiei", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= form.text_field :distance_type, placeholder: "Tipul Distantei", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= form.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <%= form.label :date ,'Data'%>
+            <%= form.date_select :date, {order: [:month, :day, :year], use_month_numbers: true} , class: "date-select" %>
+            <!-- <%= form.date_select :date, {},{class: ""} %> -->
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <%= form.text_field :location, placeholder: "Localitatea", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= form.text_field :country, placeholder: "Tara", class: "form-control"  %>
+        </div>
+    </div>
+    <br>
+</div>
+<div class="actions">
+    <%= form.submit class: "btn btn-success btn-sm"%>
+    <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
+</div>
 <% end %>

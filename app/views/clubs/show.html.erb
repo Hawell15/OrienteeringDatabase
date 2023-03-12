@@ -1,29 +1,65 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Club name:</strong>
-  <%= @club.club_name %>
+<p id="notice">
+    <%= notice %>
 </p>
+<div class="mt-4 p-5 bg-light text-black rounded --bs-gray-500">
+    <h1>
+        <%= @club.club_name %>
+    </h1>
+    <p>
+        <strong>Teritoriu:</strong>
+        <%= @club.territory %>
+    </p>
+    <p>
+        <strong>Reprezentant:</strong>
+        <%= @club.representative %>
+    </p>
+    <hr class="my-4">
+    <p>
+        <strong>Email</strong>
+        <%= @club.email %>
+    </p>
+        <p>
+        <strong>Telefon</strong>
+        <%= @club.phone %>
+    </p>
+    <p>
+        <strong>Numarul de sportivi:</strong>
+        <%= @club.runners.count%>
+    </p>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+            <th scope="col">
+                <%= link_to 'FOS ID' %>
+            </th>
+            <th>
+                <%= link_to 'Nume' %>
+            </th>
+             <th>
+                <%= link_to 'Data de Nastere' %>
+            </th>
+        </thead>
+        <tbody>
+            <% @club.runners.order(:category_valid).each do |runner| %>
+            <tr>
+                <td>
+                    <%= runner.id %>
+                </td>
+                <td>
+                    <%= link_to "#{runner.runner_name} #{runner.surname}", runner %>
+                </td>
 
-<p>
-  <strong>Territory:</strong>
-  <%= @club.territory %>
-</p>
-
-<p>
-  <strong>Representative:</strong>
-  <%= @club.representative %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @club.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @club.phone %>
-</p>
-
-<%= link_to 'Edit', edit_club_path(@club) %> |
-<%= link_to 'Back', clubs_path %>
+                <td>
+                    <%= runner.dob.strftime("%d/%m/%Y") %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <p class="lead">
+        <% if user_signed_in? %>
+        <%= link_to 'Edit', edit_polymorphic_path(@club), class: "btn btn-success btn-sm" %>
+        <%= link_to 'Delete', @club, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        <% end %>
+        <%= link_to 'Back', request.referer, class: "btn btn-secondary btn-sm" %>
+    </p>
+</div>

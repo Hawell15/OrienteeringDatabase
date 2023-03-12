@@ -3,7 +3,7 @@ class CompetitionsController < ApplicationController
 
   # GET /competitions or /competitions.json
   def index
-    @competitions = Competition.all
+    @competitions = Competition.order("#{params[:sort]}")
   end
 
   # GET /competitions/1 or /competitions/1.json
@@ -65,6 +65,6 @@ class CompetitionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def competition_params
-      params.require(:competition).permit(:competition_name, :date, :location, :country, :type, :wre_id, :checksum)
+      params.require(:competition).permit(:competition_name, :date, :location, :country, :distance_type, :wre_id, :checksum)
     end
 end

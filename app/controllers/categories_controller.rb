@@ -3,7 +3,11 @@ class CategoriesController < ApplicationController
 
   # GET /categories or /categories.json
   def index
-    @categories = Category.all
+     @categories = if params[:sort] == "count_runners"
+      Category.all.sort_by {|category| category.runners.count }
+    else
+      Category.order("#{params[:sort]}")
+    end
   end
 
   # GET /categories/1 or /categories/1.json
