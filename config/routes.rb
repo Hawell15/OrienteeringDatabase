@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :clubs
   get 'home/index'
   get 'home/get_groups'
+  get 'home/wre_id'
+  get 'home/wre_results_men'
   resources :categories
   root "home#index"
 

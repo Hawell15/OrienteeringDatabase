@@ -1,4 +1,5 @@
 <%= form_with(model: result) do |form| %>
+<% @form = form %>
 <% if result.errors.any? %>
 <div id="error_explanation">
     <h2>
@@ -13,52 +14,19 @@
 </div>
 <% end %>
 <div class="row">
+    <%= form.fields_for :group_attributes do |form_group| %>
+    <% @form_group = form_group %>
     <div class="col">
-        <%= form.label :competition_id ,'Competitia'%>
-        <%= form.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control", onChange: "competition_visibility()"} %>
+        <%= form_group.label :competition_id ,'Competitia'%>
+        <%= form_group.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control"} %>
     </div>
-    <div class="col" style="display: none">
-        <%= form.label :group_id ,'Grupa'%>
-        <%= form.select :group_id,[], {},{class: "form-select form-group form-control", onChange: "group_visibility()"} %>
-        <!-- <%= form.text_field :group_name, placeholder: "Numele Grupei", class: "form-control"  %> -->
-    </div>
-    <div class="col">
-        <%= form.label :group_name ,'Grupa'%>
-
-       <%= form.text_field :group_name, placeholder: "Grupa", class: "form-control"  %>
+    <div class="col" id="group-data">
     </div>
 </div>
 <br>
-<div id="create-competition" style="display: none">
-    <div class="row">
-        <div class="col">
-            <%= form.text_field :competition_name, placeholder: "Numele Competitiei", class: "form-control"  %>
-        </div>
-        <div class="col">
-            <%= form.text_field :distance_type, placeholder: "Tipul Distantei", class: "form-control"  %>
-        </div>
-        <div class="col">
-            <%= form.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <%= form.label :date ,'Data'%>
-            <%= form.date_select :date, {order: [:day, :month, :year], use_month_numbers: true} , class: "date-select" %>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <%= form.text_field :location, placeholder: "Localitatea", class: "form-control"  %>
-        </div>
-        <div class="col">
-            <%= form.text_field :country, placeholder: "Tara", class: "form-control"  %>
-        </div>
-    </div>
-    <br>
-</div>
+<div id="new-competition"></div>
+<br>
+<% end %>
 <div class="row">
     <div class="col">
         <%= form.number_field :place, placeholder: "Locul", class: "form-control"  %>
@@ -72,19 +40,21 @@
     <div class="col">
         <%= form.number_field :wre_points, placeholder: "WRE Puncte", class: "form-control"  %>
     </div>
-    </div>
-    <br>
+</div>
+<br>
 <div class="row">
-    <div class="col">
-        <%= form.number_field :hours, placeholder: "Ore", class: "form-control"  %>
+    <div class="col" style="display:none">
+        <%= form.number_field :time, placeholder: "Timpul", class: "form-control" %>
     </div>
     <div class="col">
-        <%= form.number_field :minutes, placeholder: "Minute", class: "form-control"  %>
+        <%= number_field_tag :hours, nil,  placeholder: "Ore", class: "form-control" %>
     </div>
     <div class="col">
-        <%= form.number_field :seconds, placeholder: "Secunde", class: "form-control"  %>
+        <%= number_field_tag :minutes, nil, placeholder: "Minute", class: "form-control"  %>
     </div>
-
+    <div class="col">
+        <%= number_field_tag :seconds, nil, placeholder: "Secunde", class: "form-control"  %>
+    </div>
 </div>
 <br>
 <div class="actions">
@@ -92,21 +62,66 @@
     <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
 </div>
 <script>
+$('form[action="/results"]').submit(function(event) {
+    event.preventDefault();
+    console.log("dsa");
+    var hours = parseInt($('#hours').val()) || 0;
+    var minutes = parseInt($('#minutes').val()) || 0;
+    var seconds = parseInt($('#seconds').val()) || 0;
+    $('#result_time').val(hours * 3600 + minutes * 60 + seconds);
+    $(this).unbind('submit').submit();
+});
 $(document).ready(function() {
-    $('#result_competition_id').on('change', function() {
+    $('#result_group_attributes_competition_id').on('change', function() {
         var id = $(this).val();
         var url = '/groups.json?comp_id=' + id;
 
+        showHideNewCompetition();
+
         $.get(url, function(data) {
             var select = $('#result_group_id');
-            select.find('option').remove();
+            select.empty();
 
             $.each(data, function(index, item) {
                 select.append('<option value="' + item.id + '">' + item.group_name + '</option>');
             });
-             select.append('<option value>' + "Grupa Noua" + '</option>');
+            select.append('<option value>' + "Grupa Noua" + '</option>');
         });
     });
 });
+
+function showHideNewCompetition() {
+    var value = $('[id*="competition_id"]').val();
+    var html = "";
+
+    if (value == "") {
+        html = "<%=j render partial: 'competitions/create_competition', :locals => { :form => @form_group} %>";
+        addGroup("text_field");
+    } else {
+        addGroup("select");
+    }
+
+    $('#new-competition').replaceWith('<div id="new-competition">' + html + '</div>');
+}
+
+function showHideNewGroup() {
+    var value = $('[id*="group_id"]').val();
+
+    if (value == "") {
+        addGroup("text_field");
+    }
+}
+
+function addGroup(type) {
+    var html = "";
+
+    if (type == "text_field") {
+        html = '<%=j @form_group.label :group_name ,"Grupa"%><%= j @form_group.text_field :group_name, placeholder: "Grupa", class: "form-control" %>';
+    } else {
+        html = '<%=j form.label :group_id ,"Grupa"%><%=j form.select :group_id,[], {},{class: "form-select form-group form-control", onChange: "showHideNewGroup()"} %>';
+    }
+
+    $('#group-data').replaceWith('<div class="col" id="group-data">' + html + '</div>');
+}
 </script>
 <% end %>

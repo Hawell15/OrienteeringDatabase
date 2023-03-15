@@ -14,17 +14,21 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-window.competition_visibility = function() {
+window.competition_visibility = function(group) {
     var value = $('[id*="competition_id"]').val();
     if (value == "") {
         $('#create-competition').show();
-        $('[id*="group_id"]').parent().hide();
-        $('[id*="group_name"]').parent().show();
+        if (!(group)) {
+            $('[id*="group_id"]').parent().hide();
+            $('[id*="group_name"]').parent().show();
+        }
 
     } else {
         $('#create-competition').hide();
-        $('[id*="group_id"]').parent().show();
-        $('[id*="group_name"]').parent().hide();
+        if (!(group)) {
+            $('[id*="group_id"]').parent().show();
+            $('[id*="group_name"]').parent().hide();
+        }
     }
 }
 window.group_visibility = function() {

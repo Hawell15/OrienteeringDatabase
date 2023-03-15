@@ -32,7 +32,12 @@ class ResultsController < ApplicationController
 
   # POST /results or /results.json
   def create
-    @result = Result.new(result_params)
+    byebug
+    if result_params.dig("group_attributes", "group_name")
+      @result = Result.new(result_params)
+    else
+      @result = Result.new(result_params.except(:group_attributes))
+    end
 
     respond_to do |format|
       if @result.save
@@ -76,6 +81,6 @@ class ResultsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def result_params
-      params.require(:result).permit(:place, :runner_id, :time, :category_id, :group_id, :wre_points)
+      params.require(:result).permit(:place, :runner_id, :time, :category_id, :group_id, :wre_points, group_attributes: [:id, :group_name, :competition_id, competition_attributes: [:id, :competition_name, :date, :location, :country, :distance_type, :wre_id]])
     end
 end

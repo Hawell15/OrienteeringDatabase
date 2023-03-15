@@ -32,12 +32,10 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-      new_params = group_params
-      new_params[:competition_id] = new_params[:competition_id] = add_competition(new_params).id
-      # new_params[:date] = "#{new_params["date(1i)"]}-#{new_params["date(2i)"]}-#{new_params["date(3i)"]}"
+    byebug
+   # competition_id = group_params["competition_id"].presence ||  Competition.create(group_params["competition_attributes"]).id
 
-      # new_params[:competition_id] = Competition.create( new_params.slice(:competition_name, :date, :location, :country, :distance_type, :wre_id)).id
-    @group = Group.new(new_params.slice(:group_name, :rang, :clasa, :competition_id))
+    @group = Group.new(group_params)
 
     respond_to do |format|
       if @group.save
@@ -83,8 +81,8 @@ class GroupsController < ApplicationController
       @group = Group.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
     def group_params
-      params.require(:group).permit(:group_name, :competition_id, :rang, :clasa, :competition_name, :distance_type, :wre_id, :location, :country, :date)
+      params.require(:group).permit(:group_name, :competition_id, :rang, :clasa,
+      competition_attributes: [:id, :competition_name, :date, :location, :country, :distance_type, :wre_id])
     end
 end

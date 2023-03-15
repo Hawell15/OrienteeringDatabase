@@ -1,0 +1,8 @@
+<%= form.fields_for :group_attributes do |form_group| %>
+    <% @form_group = form_group %>
+    <div class="col">
+        <%= form_group.label :competition_id ,'Competitia'%>
+        <%= form_group.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control"} %>
+    </div>
+    <div class="col" id="group-data">
+    </div>

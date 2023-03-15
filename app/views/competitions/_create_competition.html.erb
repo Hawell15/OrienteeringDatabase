@@ -1,0 +1,33 @@
+<div id="create-competition">
+    <%= form.fields_for :competition_attributes do |f| %>
+    <div class="row">
+        <div class="col">
+            <%= f.text_field :competition_name, placeholder: "Numele Competitiei", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= f.text_field :distance_type, placeholder: "Tipul Distantei", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= f.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <%= f.label :date ,'Data'%>
+            <%= f.date_select :date, {order: [:month, :day, :year], use_month_numbers: true} , class: "date-select" %>
+            <!-- <%= form.date_select :date, {},{class: ""} %> -->
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <%= f.text_field :location, placeholder: "Localitatea", class: "form-control"  %>
+        </div>
+        <div class="col">
+            <%= f.text_field :country, placeholder: "Tara", class: "form-control"  %>
+        </div>
+    </div>
+    <% end %>
+    <br>
+</div>

@@ -1,4 +1,5 @@
 <%= form_with(model: group) do |form| %>
+<% @form = form %>
 <% if group.errors.any? %>
 <div id="error_explanation">
     <h2>
@@ -17,7 +18,7 @@
         <%= form.text_field :group_name, placeholder: "Numele Grupei", class: "form-control"  %>
     </div>
     <div class="col">
-        <%= form.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control", onChange: "competition_visibility()"} %>
+        <%= form.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control", onChange: "show_hide_new_competition()"} %>
     </div>
 </div>
 <br>
@@ -30,39 +31,21 @@
     </div>
 </div>
 <br>
-<div id="create-competition" style="display: none">
-    <div class="row">
-        <div class="col">
-            <%= form.text_field :competition_name, placeholder: "Numele Competitiei", class: "form-control"  %>
-        </div>
-        <div class="col">
-            <%= form.text_field :distance_type, placeholder: "Tipul Distantei", class: "form-control"  %>
-        </div>
-        <div class="col">
-            <%= form.text_field :wre_id, placeholder: "WRE ID", class: "form-control"  %>
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <%= form.label :date ,'Data'%>
-            <%= form.date_select :date, {order: [:month, :day, :year], use_month_numbers: true} , class: "date-select" %>
-            <!-- <%= form.date_select :date, {},{class: ""} %> -->
-        </div>
-    </div>
-    <br>
-    <div class="row">
-        <div class="col">
-            <%= form.text_field :location, placeholder: "Localitatea", class: "form-control"  %>
-        </div>
-        <div class="col">
-            <%= form.text_field :country, placeholder: "Tara", class: "form-control"  %>
-        </div>
-    </div>
-    <br>
+<div id="new-competition">
 </div>
 <div class="actions">
     <%= form.submit class: "btn btn-success btn-sm"%>
     <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
 </div>
 <% end %>
+
+<script>
+function show_hide_new_competition() {
+    var value = $('[id*="competition_id"]').val();
+    if (value == "") {
+        $('#new-competition').replaceWith("<%=j render partial: 'competitions/create_competition', :locals => { :form => @form} %>");
+    } else {
+        $('#create-competition').replaceWith('<div id="new-competition"></div>');
+    }
+};
+</script>

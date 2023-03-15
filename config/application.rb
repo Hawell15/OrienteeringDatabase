@@ -1,6 +1,7 @@
 require_relative "boot"
 
 require "rails/all"
+require 'rest-client'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -11,6 +12,7 @@ module Orientare
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.1
     config.paths.add 'app/data', eager_load: true
+    config.autoload_paths << "#{Rails.root}/lib"
 
 
     # Configuration for the application, engines, and railties goes here.
