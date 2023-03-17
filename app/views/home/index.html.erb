@@ -1,18 +1,10 @@
-<script>
-  function show_header() {
-    if
-  $('#my-div').replaceWith("<%=j render partial: 'home/header' %>");
-  // $('#my-div').load('home/header');
-};
-</script>
 
-<body>
 
-<select name="cars" id="cars" onchange="show_header()">
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="mercedes">Mercedes</option>
-  <option value="audi">Audi</option>
-</select>
-  <div id='my-div'></div>
-</body>
+<%= "result: #{@time}"  %>
+<br>
+<!-- <%= "all: #{@ids}"  %>
+<br>
+<%= "exist: #{@existing_runners}"  %>
+<br>
+<%= "new: #{@new_ids}"  %>
+ -->

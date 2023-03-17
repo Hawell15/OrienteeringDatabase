@@ -17,7 +17,7 @@ class RunnersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create runner" do
     assert_difference('Runner.count') do
-      post runners_url, params: { runner: { best_category: @runner.best_category, category: @runner.category, category_valid: @runner.category_valid, checksum: @runner.checksum, club: @runner.club, dob: @runner.dob, forrest_wre_rang: @runner.forrest_wre_rang, gender: @runner.gender, runner_name: @runner.runner_name, sprint_wre_rang: @runner.sprint_wre_rang, surname: @runner.surname, wre_id: @runner.wre_id } }
+      post runners_url, params: { runner: { best_category: @runner.best_category, category: @runner.category, category_valid: @runner.category_valid, checksum: @runner.checksum, club: @runner.club, dob: @runner.dob, forest_wre_rang: @runner.forest_wre_rang, gender: @runner.gender, runner_name: @runner.runner_name, sprint_wre_rang: @runner.sprint_wre_rang, surname: @runner.surname, wre_id: @runner.wre_id } }
     end
 
     assert_redirected_to runner_url(Runner.last)
@@ -34,7 +34,7 @@ class RunnersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update runner" do
-    patch runner_url(@runner), params: { runner: { best_category: @runner.best_category, category: @runner.category, category_valid: @runner.category_valid, checksum: @runner.checksum, club: @runner.club, dob: @runner.dob, forrest_wre_rang: @runner.forrest_wre_rang, gender: @runner.gender, runner_name: @runner.runner_name, sprint_wre_rang: @runner.sprint_wre_rang, surname: @runner.surname, wre_id: @runner.wre_id } }
+    patch runner_url(@runner), params: { runner: { best_category: @runner.best_category, category: @runner.category, category_valid: @runner.category_valid, checksum: @runner.checksum, club: @runner.club, dob: @runner.dob, forest_wre_rang: @runner.forest_wre_rang, gender: @runner.gender, runner_name: @runner.runner_name, sprint_wre_rang: @runner.sprint_wre_rang, surname: @runner.surname, wre_id: @runner.wre_id } }
     assert_redirected_to runner_url(@runner)
   end
 

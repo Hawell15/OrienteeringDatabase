@@ -20,7 +20,7 @@ class RunnersTest < ApplicationSystemTestCase
     fill_in "Checksum", with: @runner.checksum
     fill_in "Club", with: @runner.club
     fill_in "Dob", with: @runner.dob
-    fill_in "Forrest wre rang", with: @runner.forrest_wre_rang
+    fill_in "Forest wre rang", with: @runner.forest_wre_rang
     fill_in "Gender", with: @runner.gender
     fill_in "Runner name", with: @runner.runner_name
     fill_in "Sprint wre rang", with: @runner.sprint_wre_rang
@@ -42,7 +42,7 @@ class RunnersTest < ApplicationSystemTestCase
     fill_in "Checksum", with: @runner.checksum
     fill_in "Club", with: @runner.club
     fill_in "Dob", with: @runner.dob
-    fill_in "Forrest wre rang", with: @runner.forrest_wre_rang
+    fill_in "Forest wre rang", with: @runner.forest_wre_rang
     fill_in "Gender", with: @runner.gender
     fill_in "Runner name", with: @runner.runner_name
     fill_in "Sprint wre rang", with: @runner.sprint_wre_rang

@@ -5,7 +5,7 @@ class CreateCompetitions < ActiveRecord::Migration[6.1]
       t.date :date
       t.string :location
       t.string :country
-      t.string :type
+      t.string :distance_type
       t.integer :wre_id
       t.string :checksum
 

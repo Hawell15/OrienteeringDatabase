@@ -11,7 +11,9 @@ class CreateRunners < ActiveRecord::Migration[6.1]
       t.references :category
       t.date :category_valid
       t.integer :sprint_wre_rang
-      t.integer :forrest_wre_rang
+      t.integer :forest_wre_rang
+      t.integer :sprint_wre_place
+      t.integer :forest_wre_place
       t.string :checksum
 
       t.timestamps

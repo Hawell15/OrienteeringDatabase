@@ -16,7 +16,7 @@
       <th><%= link_to 'Valabilitate ', query_hash.merge(sort: "category_valid") %></th>
       <th><%= link_to 'WRE ID', query_hash.merge(sort: "wre_id") %></th>
       <th><%= link_to 'Sprint WRE Ranking', query_hash.merge(sort: "sprint_wre_rang") %></th>
-      <th><%= link_to 'Padure WRE Ranking', query_hash.merge(sort: "forrest_wre_rang") %></th>
+      <th><%= link_to 'Padure WRE Ranking', query_hash.merge(sort: "forest_wre_rang") %></th>
       <th colspan="3">Acțiuni</th>
     </tr>
   </thead>
@@ -34,7 +34,7 @@
         <td><%= runner.category_valid&.strftime("%d/%m/%Y") %></td>
         <td><%= runner.wre_id %></td>
         <td><%= runner.sprint_wre_rang %></td>
-        <td><%= runner.forrest_wre_rang %></td>
+        <td><%= runner.forest_wre_rang %></td>
         <td><%= link_to 'Arată', runner, class: "btn btn-warning btn-sm"%></td>
         <% if user_signed_in? %>
           <td><%= link_to 'Editează', edit_polymorphic_path(runner), class: "btn btn-success btn-sm"%></td>

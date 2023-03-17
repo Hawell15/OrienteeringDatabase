@@ -4,6 +4,7 @@ class CreateGroups < ActiveRecord::Migration[6.1]
       t.string :group_name
       t.references :competition
       t.integer :rang
+      t.string :clasa
 
       t.timestamps
     end

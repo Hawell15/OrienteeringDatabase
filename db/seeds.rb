@@ -64,3 +64,7 @@ categories = [
 categories.each do |category|
   Category.create(category)
 end
+
+Competition.create("id": 0, "competition_name": 'No Competition', "date": '2021-08-01')
+Club.create("id": 0, "club_name": 'Individual')
+Group.create("id": 0, "group_name": 'No Group', "competition_id": 0)

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'home/get_groups'
   get 'home/wre_id'
   get 'home/wre_results_men'
+  get 'home/wre_results_women'
   resources :categories
   root "home#index"
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_10_053803) do
+ActiveRecord::Schema.define(version: 2023_03_05_113049) do
 
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
@@ -46,9 +46,9 @@ ActiveRecord::Schema.define(version: 2023_03_10_053803) do
     t.string "group_name"
     t.integer "competition_id"
     t.integer "rang"
+    t.string "clasa"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "clasa"
     t.index ["competition_id"], name: "index_groups_on_competition_id"
   end
 
@@ -77,7 +77,9 @@ ActiveRecord::Schema.define(version: 2023_03_10_053803) do
     t.integer "category_id"
     t.date "category_valid"
     t.integer "sprint_wre_rang"
-    t.integer "forrest_wre_rang"
+    t.integer "forest_wre_rang"
+    t.integer "sprint_wre_place"
+    t.integer "forest_wre_place"
     t.string "checksum"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
