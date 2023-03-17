@@ -1,0 +1,2 @@
+module WreHelper
+end

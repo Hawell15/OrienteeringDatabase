@@ -20,6 +20,10 @@ gem 'jbuilder', '~> 2.7'
 gem "devise"
 gem 'jquery-rails'
 gem "watir"
+gem "csv"
+gem 'open-uri'
+gem 'roo'
+
 
 gem 'rest-client'
 

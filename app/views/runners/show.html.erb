@@ -41,7 +41,7 @@
                     <tr>
                         <td><strong>Valabila pina: </strong></td>
                         <td>
-                            <%= @runner.category_valid.strftime("%d/%m/%Y")%>
+                            <%= @runner.category_valid&.strftime("%d/%m/%Y")%>
                         </td>
                     </tr>
                 </table>
@@ -55,15 +55,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Sprint WRE Ranking: </strong></td>
+                        <td><strong>Sprint WRE Ranking(Locul/Puncte): </strong></td>
                         <td>
-                            <%= @runner.sprint_wre_rang %>
+                            <%= "#{@runner.sprint_wre_place}/#{@runner.sprint_wre_rang}" %>
                         </td>
                     </tr>
                     <tr>
-                        <td><strong>Padure WRE Ranking: </strong></td>
+                        <td><strong>Padure WRE Ranking(Locul/Puncte): </strong></td>
                         <td>
-                            <%= @runner.forest_wre_rang %>
+                            <%= "#{@runner.forest_wre_place}/#{@runner.forest_wre_rang}" %>
                         </td>
                     </tr>
                   </table>
