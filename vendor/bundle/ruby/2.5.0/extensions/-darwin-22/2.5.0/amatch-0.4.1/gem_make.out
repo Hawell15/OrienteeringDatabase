@@ -1,0 +1,77 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/amatch-0.4.1/ext
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.5.9/lib/ruby/site_ruby/2.5.0 -r ./siteconf20230326-44245-obn2aj.rb extconf.rb
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/amatch-0.4.1/ext
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/amatch-0.4.1/ext
+make "DESTDIR="
+compiling amatch_ext.c
+amatch_ext.c:1881:16: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    id_split = rb_intern("split");
+               ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+amatch_ext.c:1881:16: note: '{' token is here
+    id_split = rb_intern("split");
+               ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+amatch_ext.c:1881:16: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    id_split = rb_intern("split");
+               ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+amatch_ext.c:1881:16: note: ')' token is here
+    id_split = rb_intern("split");
+               ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+amatch_ext.c:1882:15: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    id_to_f = rb_intern("to_f");
+              ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+amatch_ext.c:1882:15: note: '{' token is here
+    id_to_f = rb_intern("to_f");
+              ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+amatch_ext.c:1882:15: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    id_to_f = rb_intern("to_f");
+              ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+amatch_ext.c:1882:15: note: ')' token is here
+    id_to_f = rb_intern("to_f");
+              ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+4 warnings generated.
+compiling pair.c
+linking shared-object amatch_ext.bundle
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/amatch-0.4.1/ext
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 amatch_ext.bundle ./.gem.20230326-44245-1h6dtk1

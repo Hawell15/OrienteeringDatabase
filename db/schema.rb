@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 2023_03_05_113049) do
   create_table "categories", force: :cascade do |t|
     t.string "category_name"
     t.string "full_name"
-    t.integer "points"
+    t.float "points"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2023_03_05_113049) do
     t.string "competition_name"
     t.date "date"
     t.string "location"
-    t.string "country"
+    t.string "country", default: "Moldova"
     t.string "distance_type"
     t.integer "wre_id"
     t.string "checksum"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2023_03_05_113049) do
 
   create_table "groups", force: :cascade do |t|
     t.string "group_name"
-    t.integer "competition_id"
+    t.integer "competition_id", default: 0
     t.integer "rang"
     t.string "clasa"
     t.datetime "created_at", precision: 6, null: false
@@ -55,10 +55,11 @@ ActiveRecord::Schema.define(version: 2023_03_05_113049) do
   create_table "results", force: :cascade do |t|
     t.integer "place"
     t.integer "runner_id", null: false
-    t.integer "time"
-    t.integer "category_id", null: false
-    t.integer "group_id", null: false
+    t.integer "time", default: 0
+    t.integer "category_id", default: 10, null: false
+    t.integer "group_id", default: 0, null: false
     t.integer "wre_points"
+    t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["category_id"], name: "index_results_on_category_id"
@@ -69,13 +70,13 @@ ActiveRecord::Schema.define(version: 2023_03_05_113049) do
   create_table "runners", force: :cascade do |t|
     t.string "runner_name"
     t.string "surname"
-    t.date "dob"
-    t.integer "club_id"
+    t.date "dob", default: "2023-03-27"
+    t.integer "club_id", default: 0
     t.string "gender"
     t.integer "wre_id"
-    t.integer "best_category_id"
-    t.integer "category_id"
-    t.date "category_valid"
+    t.integer "best_category_id", default: 10
+    t.integer "category_id", default: 10
+    t.date "category_valid", default: "2100-01-01"
     t.integer "sprint_wre_rang"
     t.integer "forest_wre_rang"
     t.integer "sprint_wre_place"

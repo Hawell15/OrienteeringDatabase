@@ -24,6 +24,7 @@ gem "csv"
 gem 'open-uri'
 gem 'roo'
 
+gem 'text'
 
 gem 'rest-client'
 

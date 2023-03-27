@@ -58,7 +58,7 @@
   </thead>
 
   <tbody>
-     <% group.results.each do |result| %>
+     <% group.results.order(:place).each do |result| %>
       <tr>
         <td><%= result.place %></td>
         <td><%= link_to "#{result.runner.runner_name} #{result.runner.surname}", result.runner  %></td>

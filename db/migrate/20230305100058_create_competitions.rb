@@ -4,7 +4,7 @@ class CreateCompetitions < ActiveRecord::Migration[6.1]
       t.string :competition_name
       t.date :date
       t.string :location
-      t.string :country
+      t.string :country, default: "Moldova"
       t.string :distance_type
       t.integer :wre_id
       t.string :checksum

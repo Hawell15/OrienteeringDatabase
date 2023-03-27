@@ -1,0 +1,13 @@
+<%if @data %>
+ <%= @data %>
+
+ <% else %>
+<%= form_tag({ action: "html_results" }, multipart: true) do %>
+  <div class="field">
+    <%= label_tag(:file, "Select a file to upload") %>
+    <%= file_field_tag(:file) %>
+  </div>
+  <%= submit_tag("Upload") %>
+
+<% end %>
+<% end %>
