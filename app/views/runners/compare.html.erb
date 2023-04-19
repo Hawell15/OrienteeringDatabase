@@ -1,0 +1,83 @@
+<script>
+ $(document).ready(function() {
+  var searchInput = $("#search-input");
+  var suggestionsList = $("#dropdown-menu");
+
+  searchInput.on("input", function() {
+    var query = searchInput.val();
+    if (query.length >= 3) {
+      $.ajax({
+        url: "/home/suggestions",
+        data: { query: query },
+        success: function(data) {
+          suggestionsList.empty();
+          for (var i = 0; i < data.length; i++) {
+            var suggestion = "<li class='dropdown-item' data-id='" + data[i].id + "'>" + data[i].name + "</li>";
+            suggestionsList.append(suggestion);
+          }
+        }
+      });
+    } else {
+      suggestionsList.empty();
+    }
+  });
+
+  suggestionsList.on("click", ".dropdown-item", function() {
+    var selectedName = $(this).text();
+    var selectedId = $(this).data("id");
+    searchInput.val(selectedName);
+    $("#runner_id").val(selectedId);
+    suggestionsList.empty();
+  });
+});
+
+
+</script>
+
+<style>
+  form {
+  position: relative;
+}
+#dropdown-menu {
+  top: calc(100% + 10px);
+  left: 0;
+  z-index: 999;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  width: 30%;
+}
+
+.dropdown-item {
+  padding: 5px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f5;
+}
+
+</style>
+
+<!-- <%= form_tag(runners_path, method: "get") do %>
+  <%= label_tag(:search, "Primil sportiv :") %>
+  <%= text_field_tag(:search, nil, id: "search-input", autocomplete: "off") %>
+  <ul id="dropdown-menu"></ul>
+<% end %>
+
+<hr> -->
+<%= form_tag compare_path do %>
+<label for="id">Primul Sportiv</label>
+<%= select_tag :first_name, options_for_select(Runner.all.map{ |runner| ["#{runner.runner_name} #{runner.surname}", runner.id] }) %>
+<label for="id">Al doilea Sportiv</label>
+<%= select_tag :second_name, options_for_select(Runner.all.map{ |runner| ["#{runner.runner_name} #{runner.surname}", runner.id] }) %>
+<%= submit_tag "Submit" %>
+<% end %>
+<% if  @runner_one && @runner_two %>
+<%= render "compare", runner_one: @runner_one, runner_two: @runner_two %>
+<% end %>
+

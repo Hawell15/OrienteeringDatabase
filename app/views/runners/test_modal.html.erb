@@ -1,0 +1,137 @@
+<% runner_one = Runner.find(1) %>
+<% runner_two = Runner.find(9) %>
+<% runner_one_wins = 2 %>
+<% runner_two_wins = 1 %>
+<% @common_group = [2, 17, 18, 19, 20, 25, 26, 27, 30, 73, 57, 62, 81, 82] %>
+<table class="table table-striped table-bordered table-hover">
+        <tr class="table-primary">
+            <td>
+                <div class="mt-4 p-5 bg-light text-black rounded --bs-gray-500">
+                    <h1>
+                        <%= "#{runner_one.runner_name} #{runner_one.surname}"  %>
+                    </h1>
+                    <p>
+                        <strong>Data Nasterii:</strong>
+                        <%= runner_one.dob.strftime("%d/%m/%Y") %>
+                    </p>
+                    <p>
+                        <strong>Club:</strong>
+                        <%= link_to runner_one.club.club_name, runner_one.club %>
+                    </p>
+                    <p>
+                        <strong>Categoria actula:</strong>
+                        <%= runner_one.category.category_name %>
+                    </p>
+                    <hr class="my-4">
+                    <p>
+                        <strong>Sprint WRE Ranking(Locul/Puncte):</strong>
+                        <%= "#{runner_one.sprint_wre_place}/#{runner_one.sprint_wre_rang}" %>
+                    </p>
+                    <p>
+                        <strong>Padure WRE Ranking(Locul/Puncte):</strong>
+                        <%= "#{runner_one.forest_wre_place}/#{runner_one.forest_wre_rang}" %>
+                    </p>
+                </div>
+            </td>
+            <td>
+                <div class="mt-4 p-5 bg-light text-black rounded --bs-gray-500">
+                    <h1>
+                        <%= "#{runner_two.runner_name} #{runner_two.surname}"  %>
+                    </h1>
+                    <p>
+                        <strong>Data Nasterii:</strong>
+                        <%= runner_two.dob.strftime("%d/%m/%Y") %>
+                    </p>
+                    <p>
+                        <strong>Club:</strong>
+                        <%= link_to runner_two.club.club_name, runner_two.club %>
+                    </p>
+                    <p>
+                        <strong>Categoria actula:</strong>
+                        <%= runner_two.category.category_name %>
+                    </p>
+                    <hr class="my-4">
+                    <p>
+                        <strong>Sprint WRE Ranking(Locul/Puncte):</strong>
+                        <%= "#{runner_two.sprint_wre_place}/#{runner_two.sprint_wre_rang}" %>
+                    </p>
+                    <p>
+                        <strong>Padure WRE Ranking(Locul/Puncte):</strong>
+                        <%= "#{runner_two.forest_wre_place}/#{runner_two.forest_wre_rang}" %>
+                    </p>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h1 style="background-color: <%= runner_one_wins > runner_two_wins ? '#00c71e' : runner_one_wins == runner_two_wins ? '#42f2f5' : '#ff6961' %>">Victorii:
+                    <%= runner_one_wins %>
+                </h1>
+            </td>
+            <td>
+                <h1 style="background-color: <%= runner_two_wins > runner_one_wins ? '#00c71e' : runner_one_wins == runner_two_wins ? '#42f2f5' : '#ff6961' %>">Victorii:
+                    <%= runner_two_wins %>
+                </h1>
+            </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+      </td>
+      </tr>
+    </table>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">
+                    <%= link_to 'Locul' %>
+                </th>
+                <th>
+                    <%= link_to 'Timpul'%>
+                </th>
+                <th>
+                    <%= link_to 'Competitia' %>
+                </th>
+                <th>
+                    <%= link_to 'Grupa' %>
+                </th>
+                <th scope="col">
+                    <%= link_to 'Locul' %>
+                </th>
+                <th>
+                    <%= link_to 'Timpul'%>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @common_group.each do |group_id| %>
+            <% group = Group.find(group_id) %>
+             <%  runner_one_result = runner_one.results.where(group_id: group_id).first %>
+             <%  runner_two_result = runner_two.results.where(group_id: group_id).first %>
+
+             <%  runner_one_place = runner_one_result.place.zero? ? 99999999 : runner_one_result.place %>
+             <%  runner_two_place = runner_two_result.place.zero? ? 99999999 : runner_two_result.place %>
+
+            <tr>
+                <td style="background-color: <%= runner_one_place < runner_two_place ? '#00c71e' : runner_one_place == runner_two_place ? '#42f2f5' : '#ff6961' %>">
+                    <%= runner_one_result.place %>
+                </td>
+                <td>
+                    <%= Time.at(runner_one_result.time).utc.strftime('%H:%M:%S') %>
+                </td>
+
+                <td>
+                    <%= link_to "#{group.competition.competition_name} #{group.competition.date.year}", group.competition %>
+                </td>
+                <td>
+                    <%= link_to group.group_name, group %>
+                </td>
+                <td style="background-color: <%= runner_two_place < runner_one_place ? '#00c71e' : runner_two_place == runner_one_place ? '#42f2f5' : '#ff6961' %>">
+                    <%= runner_two_result.place %>
+                </td>
+                <td>
+                    <%= Time.at(runner_two_result.time).utc.strftime('%H:%M:%S') %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>

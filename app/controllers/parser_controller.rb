@@ -1,4 +1,7 @@
 class ParserController < ApplicationController
+  def index
+  end
+
   def wre_ids
     time = Time.now
     options = [{ gender: "MEN", type: "F" }, { gender:"MEN", type:"FS" }, { gender:"WOMEN", type:"F" }, { gender:"WOMEN", type:"FS" }]
@@ -139,7 +142,7 @@ class ParserController < ApplicationController
 
         runner.update!(hash)
       end
-    rescue
+    rescue => error
       byebug
     end
   ensure
@@ -199,8 +202,9 @@ class ParserController < ApplicationController
         group = Group.find_or_create_by(competition: competition, group_name: "#{runner.gender.upcase.sub("F", "W")}21E")
 
         category_id = case result["points"].to_i
-        when 700..999   then 3
-        when 1000..1299 then 2
+        when 700..999   then 4
+        when 900..1099  then 3
+        when 1100..1299 then 2
         when 1300..1500 then 1
         else 10
         end

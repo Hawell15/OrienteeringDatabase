@@ -1,0 +1,31 @@
+<table class="table table-striped table-bordered table-hover">
+  <thead class="table-primary">
+     <tr>
+       <% query_hash = { category: params["category"] }%>
+      <th scope="col"> <%= link_to 'FOS ID',  query_hash.merge(sort: "id") %></th>
+      <th><%= link_to 'Nume', query_hash.merge(sort: "runner") %></th>
+      <th><%= link_to 'Genul', query_hash.merge(sort: "gender") %></th>
+      <th><%= link_to 'Data Nastere', query_hash.merge(sort: "dob") %></th>
+      <th><%= link_to 'Club', query_hash.merge(sort: "club_id") %></th>
+      <th><%= link_to 'Titlul Sportiv', query_hash.merge(sort: "best_category_id") %></th>
+      <th><%= link_to 'Categorie Valida', query_hash.merge(sort: "category_id") %></th>
+      <th><%= link_to 'Valabilitate ', query_hash.merge(sort: "category_valid") %></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @updated_runners.each do |runner| %>
+      <% byebug %>
+      <tr>
+        <td><%= runner.id %></td>
+        <td><%= "#{runner.runner_name} #{runner.surname}" %></td>
+        <td><%= runner.gender %></td>
+        <td><%= runner.dob.strftime("%d/%m/%Y") %></td>
+        <td><%= link_to runner.club&.club_name, runner.club %></td>
+        <td><%= Category.find_by_id(runner.best_category_id)&.category_name %></td>
+        <td><%= runner.category.category_name %></td>
+        <td><%= runner.category_valid&.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

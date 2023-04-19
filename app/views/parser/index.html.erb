@@ -1,0 +1,17 @@
+<% if admin_user? %>
+
+<%= link_to "WRE IDs", wre_ids_path, class: "btn btn-primary" %>
+<br>
+<br>
+<%= link_to "WRE Rezultate", wre_results_path, class: "btn btn-primary" %>
+<br>
+<br>
+<%= link_to "FOS Rezultate", fos_results_path, class: "btn btn-primary" %>
+
+<br>
+<br>
+<%= link_to "Adauga din file", html_results_path, class: "btn btn-primary" %>
+
+<% else %>
+<h3>Numai administratorul poate accesa aceasta pagina</h3>
+<% end %>

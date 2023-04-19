@@ -1,0 +1,24 @@
+<h1 class="h3 mb-3 fw-normal"><%= @club.club_name %></h1>
+
+<div class="mb-3">
+  <h2 class="mb-3">Administratori</h4>
+  <table class="table">
+    <% @club.users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td>
+          <%= button_to 'Șterge', remove_user_path(@club, user), method: :patch, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<div class="mb-3">
+  <h4 class="mb-3">Adauga Administrator nou</h4>
+  <%= form_tag({ action: "add_admin" }, multipart: true) do %>
+    <%= select_tag :user_id,  options_for_select(User.where(club: nil).map { |user| [user.email, user.id] }), class: "form-select form-control mb-3" %>
+
+    <%= submit_tag("Adauga", class: "btn btn-primary") %>
+  <% end %>
+</div>

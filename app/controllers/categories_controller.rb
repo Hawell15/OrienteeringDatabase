@@ -61,6 +61,43 @@ class CategoriesController < ApplicationController
     end
   end
 
+  def count_categories
+    @updated_runners = Runner.where('category_valid < ?', Date.today)
+      # runner
+      Result.create(
+        runner: runner,
+        group_id: 1,
+        date: runner.category_valid,
+        category_id: runner.category_id + 1
+        )
+      runner.update!(
+        category_id: runner.category_id + 1,
+        category_valid: runner.category_valid + 2.years
+      )
+    end
+
+
+    runner_query = Runner.joins(:results)
+             .where("results.date > ?", (Date.today - 2.years).as_json)
+             .where("runners.category_id >= results.category_id")
+             .where.not("(runners.category_id = results.category_id AND runners.category_valid >= results.date)")
+             .select("runners.*, results.category_id as min_category_id, results.date as max_result_date")
+             .order("runners.id ASC, results.category_id ASC, results.date DESC")
+             .group_by(&:id)
+             .map { |id, group| group.first }
+
+
+    runner_query.each do |runner|
+      runner.update!(
+        category_id:      runner.min_category_id,
+        category_valid:   (runner.max_result_date.to_date + 2.years).as_json,
+        best_category_id: [runner.min_category_id, runner.best_category_id].min
+      )
+    end
+
+    @updated_runners += runner_query
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category

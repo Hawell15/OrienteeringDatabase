@@ -19,6 +19,10 @@ class RunnersController < ApplicationController
     end
   end
 
+  def compare
+    show_wins(params[:first_name], params[:second_name]) if params[:first_name] && params[:second_name]
+  end
+
   # GET /runners/1 or /runners/1.json
   def show
   end
@@ -70,7 +74,11 @@ class RunnersController < ApplicationController
     end
   end
 
+  def test_modal
+  end
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_runner
       @runner = Runner.find(params[:id])
@@ -78,6 +86,37 @@ class RunnersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def runner_params
-      params.require(:runner).permit(:runner_name, :surname, :dob, :club, :gender, :wre_id, :best_category, :category, :category_valid, :sprint_wre_rang, :sprint_wre_place, :forest_wre_place, :forest_wre_rang, :checksum)
+      params.require(:runner).permit(:id, :runner_name, :surname, :dob, :club_id, :gender, :wre_id, :best_category_id, :category_id, :category_valid, :sprint_wre_rang, :sprint_wre_place, :forest_wre_place, :forest_wre_rang, :checksum, results_attributes:[:place, :time, :group_id , :wre_points,group_attributes: [:id, :group_name, :competition_id, competition_attributes: [:id, :competition_name, :date, :location, :country, :distance_type, :wre_id]]])
     end
+
+  def show_wins(one, two)
+    @runner_one = Runner.find(one)
+    @runner_two = Runner.find(two)
+    # @index_array1 = result_index_array(@runner_one.results)
+    # @index_array2 = result_index_array(@runner_two.results)
+
+    @runner_one_wins = 0
+    @runner_two_wins = 0
+    @ties            = 0
+
+    group_ids_one = @runner_one.results.pluck(:group_id)
+    group_ids_two = @runner_two.results.pluck(:group_id)
+    @common_group = (group_ids_one & group_ids_two)
+
+    @common_group.each do |group|
+      first_runner_place  = Result.find_by(group_id: group, runner: @runner_one).place
+      second_runner_place = Result.find_by(group_id: group, runner: @runner_two).place
+
+      first_runner_place  = 9999999 if first_runner_place.zero?
+      second_runner_place = 9999999 if second_runner_place.zero?
+
+      if first_runner_place == second_runner_place
+        @ties += 1
+      elsif first_runner_place < second_runner_place
+        @runner_one_wins += 1
+      else
+        @runner_two_wins += 1
+      end
+    end
+  end
 end

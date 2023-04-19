@@ -1,5 +1,5 @@
 class ClubsController < ApplicationController
-  before_action :set_club, only: %i[ show edit update destroy ]
+  before_action :set_club, only: %i[ show edit update destroy add_admin]
 
   # GET /clubs or /clubs.json
   def index
@@ -17,6 +17,13 @@ class ClubsController < ApplicationController
 
   # GET /clubs/1/edit
   def edit
+  end
+
+  def add_admin
+    return unless params[:user_id]
+
+    User.find(params[:user_id]).update!(club: @club)
+    redirect_to add_admin_path(@club)
   end
 
   # POST /clubs or /clubs.json
@@ -57,6 +64,13 @@ class ClubsController < ApplicationController
     end
   end
 
+  def destroy_user
+    @club = Club.find(params[:id])
+    @user = User.find(params[:format])
+  @club.users.delete(@user)
+  redirect_to add_admin_path(@club)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_club
@@ -65,6 +79,6 @@ class ClubsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def club_params
-      params.require(:club).permit(:club_name, :territory, :representative, :email, :phone)
+      params.require(:club).permit(:club_name, :territory, :representative, :email, :phone, :format, :user_id)
     end
 end
