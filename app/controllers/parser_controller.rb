@@ -3,6 +3,8 @@ class ParserController < ApplicationController
   end
 
   def wre_ids
+    return unless admin_user?
+
     time = Time.now
     options = [{ gender: "MEN", type: "F" }, { gender:"MEN", type:"FS" }, { gender:"WOMEN", type:"F" }, { gender:"WOMEN", type:"FS" }]
     threads = []
@@ -55,8 +57,14 @@ class ParserController < ApplicationController
     @time = Time.now - time
   end
 
+  def excel_results
+    return unless admin_user? || club_admin?
+  end
+
 
   def wre_results
+    return unless admin_user?
+
     @results_count = 0
     runners = Runner.where.not(wre_id: nil)
     size = (runners.size / 5.0).ceil
@@ -71,6 +79,7 @@ class ParserController < ApplicationController
   end
 
   def html_results
+    return unless admin_user?
     return unless params["file"]
 
     file = File.read(params["file"])
@@ -80,6 +89,8 @@ class ParserController < ApplicationController
   end
 
   def fos_results
+    return unless admin_user?
+
     browser = Watir::Browser.new
     browser.goto("http://orienteering.md/wp-login.php")
 

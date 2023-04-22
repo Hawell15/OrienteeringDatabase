@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
 
   def count_rang
     runner_ids = @group.results.order(:place).limit(12).pluck(:runner_id)
-    range      = Runner.joins(:category).where(id: runner_ids).sum('categories.points')
+    rang       = Runner.joins(:category).where(id: runner_ids).sum('categories.points')
     @group.update!(rang: rang)
 
     winner_time = @group.results.order(:place).first.time
@@ -79,9 +79,6 @@ class GroupsController < ApplicationController
 
   # POST /groups or /groups.json
   def create
-    byebug
-   # competition_id = group_params["competition_id"].presence ||  Competition.create(group_params["competition_attributes"]).id
-
     @group = Group.new(group_params)
 
     respond_to do |format|

@@ -1,6 +1,6 @@
-<h1>Editing Result</h1>
-
+<h1>Editează Rezultat</h1>
+<% if admin_user? %>
 <%= render 'form', result: @result %>
-
-<%= link_to 'Show', @result %> |
-<%= link_to 'Back', results_path %>
+<% else %>
+    <h3> Nu ai drepturi pentru a edita rezultate </h3>
+<% end %>

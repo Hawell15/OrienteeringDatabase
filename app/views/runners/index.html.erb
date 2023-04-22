@@ -36,7 +36,7 @@
         <td><%= "#{runner.sprint_wre_place}/#{runner.sprint_wre_rang}p" %></td>
         <td><%= "#{runner.forest_wre_place}/#{runner.forest_wre_rang}p" %></td>
         <td><%= link_to 'Arată', runner, class: "btn btn-warning btn-sm"%></td>
-        <% if user_signed_in? %>
+        <% if admin_user? || club_admin?(runner.club) %>
           <td><%= link_to 'Editează', edit_polymorphic_path(runner), class: "btn btn-success btn-sm"%></td>
           <td><%= link_to 'Șterge', runner, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
         <% end %>
@@ -47,6 +47,6 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if admin_user? || club_admin? %>
 <%= link_to 'Sportiv Nou', new_runner_path, class: "btn btn-info" %>
 <% end %>

@@ -8,9 +8,17 @@ module ApplicationHelper
     comp = Competition.new(hash.slice(:competition_name, :date, :location, :country, :distance_type, :wre_id))
   end
 
+  def club_admin?(club = nil)
+    return false unless current_user
+    return current_user.club.present? unless club
+
+    club.users.include?(current_user)
+  end
+
   def admin_user?
     return false unless current_user
-    current_user.email == "test@mail.ru"
+
+    current_user.admin
   end
 
   def rang_array

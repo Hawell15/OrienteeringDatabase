@@ -1,3 +1,4 @@
+<% if admin_user? %>
 <%= form_with(model: club) do |form| %>
   <% if club.errors.any? %>
     <div id="error_explanation">
@@ -37,7 +38,12 @@
 </div>
 <br>
  <div class="actions">
-    <%= form.submit class: "btn btn-success btn-sm"%>
+  <% text = @club.id ? "Actualizează" : "Crează" %>
+    <%= form.submit "#{text} Club", class: "btn btn-success btn-sm"%>
     <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
 </div>
+<% end %>
+<% else %>
+
+<h3> Doar administratorul poate adăuga club </h3>
 <% end %>

@@ -1,3 +1,4 @@
+<% if admin_user? || club_admin? %>
 <%= form_with(model: competition) do |form| %>
 <% if competition.errors.any? %>
 <div id="error_explanation">
@@ -41,7 +42,13 @@
 </div>
 <br>
 <div class="actions">
-    <%= form.submit class: "btn btn-success btn-sm"%>
+    <% text = @competition.id ? "Actualizează" : "Crează" %>
+    <%= form.submit "#{text} Competiție", class: "btn btn-success btn-sm"%>
     <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
 </div>
 <% end %>
+<% else %>
+
+<h3> Doar administratorul poate adăuga competiție </h3>
+<% end %>
+

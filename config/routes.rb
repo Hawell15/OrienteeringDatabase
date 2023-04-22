@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   get 'parser/wre_results', as: 'wre_results'
   get 'parser/html_results', as: 'html_results'
   post 'parser/html_results'
+  get 'parser/excel_results'
   post 'groups/count_rang', as: 'count_rang'
   get 'parser/fos_results', as: 'fos_results'
   get 'categories/count_categories'

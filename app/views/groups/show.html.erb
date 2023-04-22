@@ -18,52 +18,79 @@
         <strong>Tipul Distantei</strong>
         <%= @group.competition.distance_type %>
     </p>
-     <p>
+    <p>
         <strong>Clasa</strong>
         <%=@group.clasa %>
     </p>
-     <p>
+    <p>
         <strong>Rang</strong>
         <%= @group.rang %>
     </p>
-
-   <%= form_tag(count_rang_path, method: :post) do %>
-     <%= hidden_field_tag :id, @group.id %>
-    <%= submit_tag 'Calculeaza categoriile' %>
-    <% end %>
-
-   <table class="table table-striped table-bordered table-hover">
-  <thead class="table-primary">
-     <tr>
-      <th scope="col"> <%= link_to 'Locul' %></th>
-      <th><%= link_to 'Sportiv'%></th>
-      <th><%= link_to 'Timpul'%></th>
-      <th><%= link_to 'Categoria indeplinita' %></th>
-      <th><%= link_to 'Competitia' %></th>
-      <th><%= link_to 'Grupa' %></th>
-      <th><%= link_to 'Wre Puncte' %></th>
-    </tr>
-  </thead>
-
-  <tbody>
-     <% @group.results.order(:place).each do |result| %>
-      <tr>
-        <td><%= result.place %></td>
-        <td><%= link_to "#{result.runner.runner_name} #{result.runner.surname}", result.runner  %></td>
-        <td><%= Time.at(result.time).utc.strftime('%H:%M:%S') %></td>
-        <td><%= result.category.category_name %></td>
-        <td><%= link_to "#{result.group.competition.competition_name} #{result.group.competition.date.year}", result.group.competition %></td>
-        <td><%= link_to result.group.group_name, result.group %></td>
-        <td><%= result.wre_points %></td>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
-    <p class="lead">
-        <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_polymorphic_path(@group), class: "btn btn-success btn-sm" %>
-        <%= link_to 'Delete', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+    <% if admin_user? %>
+        <%= form_tag(count_rang_path, method: :post) do %>
+            <%= hidden_field_tag :id, @group.id %>
+            <%= submit_tag 'Calculeaza categoriile' %>
         <% end %>
-        <%= link_to 'Back', request.referer, class: "btn btn-secondary btn-sm" %>
+    <% end %>
+    <table class="table table-striped table-bordered table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">
+                    <%= link_to 'Locul' %>
+                </th>
+                <th>
+                    <%= link_to 'Sportiv'%>
+                </th>
+                <th>
+                    <%= link_to 'Timpul'%>
+                </th>
+                <th>
+                    <%= link_to 'Categoria indeplinita' %>
+                </th>
+                <th>
+                    <%= link_to 'Competitia' %>
+                </th>
+                <th>
+                    <%= link_to 'Grupa' %>
+                </th>
+                <th>
+                    <%= link_to 'Wre Puncte' %>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @group.results.order(:place).each do |result| %>
+            <tr>
+                <td>
+                    <%= result.place %>
+                </td>
+                <td>
+                    <%= link_to "#{result.runner.runner_name} #{result.runner.surname}", result.runner  %>
+                </td>
+                <td>
+                    <%= Time.at(result.time).utc.strftime('%H:%M:%S') %>
+                </td>
+                <td>
+                    <%= result.category.category_name %>
+                </td>
+                <td>
+                    <%= link_to "#{result.group.competition.competition_name} #{result.group.competition.date.year}", result.group.competition %>
+                </td>
+                <td>
+                    <%= link_to result.group.group_name, result.group %>
+                </td>
+                <td>
+                    <%= result.wre_points %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+    <p class="lead">
+        <% if admin_user? %>
+        <%= link_to 'Editează', edit_polymorphic_path(@group), class: "btn btn-success btn-sm" %>
+        <%= link_to 'Șterge', @group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        <% end %>
+        <%= link_to 'Înapoi', request.referer, class: "btn btn-secondary btn-sm" %>
     </p>
 </div>

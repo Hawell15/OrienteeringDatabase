@@ -1,3 +1,4 @@
+<% if admin_user? || club_admin? %>
 <%= form_with(model: group) do |form| %>
 <% @form = form %>
 <% if group.errors.any? %>
@@ -34,9 +35,14 @@
 <div id="new-competition">
 </div>
 <div class="actions">
-    <%= form.submit class: "btn btn-success btn-sm"%>
+    <% text = @group.id ? "Actualizează" : "Crează" %>
+    <%= form.submit "#{text} Grupa", class: "btn btn-success btn-sm"%>
     <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
 </div>
+<% end %>
+<% else %>
+
+<h3> Doar administratorul poate adăuga grupa </h3>
 <% end %>
 
 <script>

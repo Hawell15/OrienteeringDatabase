@@ -23,18 +23,23 @@
                         <%=link_to "Categorii",  categories_path,   class: "dropdown-item" %>
                     </ul>
                 </li>
-                <% if user_signed_in? %>
+                <% if admin_user? || club_admin?%>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         Adauga la Baza de Date
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <%=link_to "Adauga Club",       new_club_path,        class: "dropdown-item" %>
+                        <% if admin_user? %>
+                        <%=link_to "Adauga Club",                    new_club_path,        class: "dropdown-item" %>
+                        <% end %>
                         <%=link_to "Adauga Sportiv",    new_runner_path,      class: "dropdown-item" %>
                         <%=link_to "Adauga Competitie", new_competition_path, class: "dropdown-item" %>
                         <%=link_to "Adauga Grupa",      new_group_path,       class: "dropdown-item" %>
                         <%=link_to "Adauga Rezultat",   new_result_path,      class: "dropdown-item" %>
                         <%=link_to "Adauga din fisier", root_path,            class: "dropdown-item" %>
+                        <% if admin_user? %>
+                        <%=link_to "Actualizeaza datele", parser_path,        class: "dropdown-item" %>
+                        <% end %>
                     </ul>
                 </li>
                 <% end %>

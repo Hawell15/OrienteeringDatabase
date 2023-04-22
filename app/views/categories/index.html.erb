@@ -21,8 +21,10 @@
         <td><%= category.points %></td>
         <td><%= link_to category.runners.count, runners_path(category: category.id) %></td>
         <td><%= link_to 'Arată', category, class: "btn btn-warning btn-sm"%></td>
+        <% if admin_user? %>
         <td><%= link_to 'Editează', edit_polymorphic_path(category), class: "btn btn-success btn-sm"%></td>
         <td><%= link_to 'Șterge', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
+        <% end %>
 
       </tr>
     <% end %>
@@ -31,6 +33,6 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if admin_user? %>
 <%= link_to 'New Category', new_category_path, class: "btn btn-info" %>
 <% end %>

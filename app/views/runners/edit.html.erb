@@ -1,6 +1,7 @@
-<h1>Editing Runner</h1>
-
+<h1>Editează Sportiv</h1>
+<% if admin_user? || club_admin?(@runner.club) %>
 <%= render 'form', runner: @runner %>
+<% else %>
+    <h3> Nu ai drepturi pentru a edita sportivul </h3>
+<% end %>
 
-<%= link_to 'Show', @runner %> |
-<%= link_to 'Back', runners_path %>

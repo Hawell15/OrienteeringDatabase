@@ -21,7 +21,7 @@
         <td><%= group.competition.date %></td>
         <td><%= group.rang %></td>
         <td><%= link_to 'Arată', group, class: "btn btn-warning btn-sm"%></td>
-        <% if user_signed_in? %>
+        <% if admin_user? %>
           <td><%= link_to 'Editează', edit_polymorphic_path(group), class: "btn btn-success btn-sm"%></td>
           <td><%= link_to 'Șterge', group, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
         <% end %>
@@ -32,6 +32,6 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if admin_user? %>
 <%= link_to 'Grupa Noua', new_group_path, class: "btn btn-info" %>
 <% end %>

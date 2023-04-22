@@ -125,10 +125,10 @@
         </tbody>
     </table>
     <p class="lead">
-        <% if user_signed_in? %>
-        <%= link_to 'Edit', edit_polymorphic_path(@runner), class: "btn btn-success btn-sm" %>
-        <%= link_to 'Delete', @runner, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+        <% if admin_user? || club_admin?(@runner.club) %>
+        <%= link_to 'Editează', edit_polymorphic_path(@runner), class: "btn btn-success btn-sm" %>
+        <%= link_to 'Șterge', @runner, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
         <% end %>
-        <%= link_to 'Back', request.referer, class: "btn btn-secondary btn-sm" %>
+        <%= link_to 'Înapoi', request.referer, class: "btn btn-secondary btn-sm" %>
     </p>
 </div>

@@ -1,5 +1,6 @@
-<h1>New Runner</h1>
-
+<h1>Sportiv Nou</h1>
+<% if admin_user? || club_admin? %>
 <%= render 'form', runner: @runner %>
-
-<%= link_to 'Back', runners_path %>
+<% else %>
+    <h3> Nu ai drepturi pentru a adauga sportiv </h3>
+<% end %>

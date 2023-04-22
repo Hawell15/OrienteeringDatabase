@@ -28,7 +28,7 @@
         <td><%= result.wre_points %></td>
         <td><div class="btn-group" role="group" aria-label="Basic example">
           <%= link_to 'Arată', result, class: "btn btn-warning btn-sm"%>
-        <% if user_signed_in? %>
+        <% if admin_user? %>
           <%= link_to 'Editează', edit_polymorphic_path(result), class: "btn btn-success btn-sm"%>
           <%= link_to 'Șterge', result, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
         <% end %>
@@ -42,6 +42,6 @@
 
 <br>
 
-<% if user_signed_in? %>
+<% if admin_user? || club_admin? %>
 <%= link_to 'Rezultat Nou', new_result_path, class: "btn btn-info" %>
 <% end %>

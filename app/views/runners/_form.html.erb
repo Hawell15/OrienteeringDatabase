@@ -20,7 +20,8 @@
         <%= form.text_field :surname, placeholder: "Prenumele", class: "form-control"  %>
     </div>
     <div class="col">
-        <%= form.select :club_id,  options_for_select(Club.all.map { |club| [club.club_name, club.id] }), {},{class: "form-select form-group form-control"} %>
+        <% clubs = admin_user? ? Club.all : [current_user.club] %>
+        <%= form.select :club_id,  options_for_select(clubs.map { |club| [club.club_name, club.id] }), {},{class: "form-select form-group form-control"} %>
     </div>
 </div>
 <br>
@@ -59,7 +60,8 @@
 </div>
 
 <div class="actions">
-    <%= form.submit class: "btn btn-success btn-sm"%>
+    <% text = @runner.id ? "Actualizează" : "Crează" %>
+    <%= form.submit "#{text} Sportiv", class: "btn btn-success btn-sm"%>
     <%= link_to 'Inapoi', request.referer, class: "btn btn-secondary btn-sm" %>
 </div>
 <% end %>

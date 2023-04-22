@@ -1,6 +1,5 @@
 <h1>Bine ați venit în baza de date a orientării sportive</h1>
 
-
 <table class="table table-bordered ">
   <thead>
     <tr class = "table-primary">
@@ -45,7 +44,7 @@
         <td><%= competition.distance_type %></td>
         <td><%= competition.wre_id %></td>
         <td><%= link_to 'Arată', competition, class: "btn btn-warning btn-sm"%></td>
-        <% if user_signed_in? %>
+        <% if admin_user? %>
           <td><%= link_to 'Editează', edit_polymorphic_path(competition), class: "btn btn-success btn-sm"%></td>
           <td><%= link_to 'Șterge', competition, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %></td>
         <% end %>
