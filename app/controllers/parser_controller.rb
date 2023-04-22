@@ -58,7 +58,60 @@ class ParserController < ApplicationController
   end
 
   def excel_results
+    return unless params[:path]
     return unless admin_user? || club_admin?
+
+    path = params[:path].tempfile.path
+
+    file  = Roo::Spreadsheet.open(path)
+    sheet = file.sheet(0)
+
+    (3..sheet.last_row).each do |index|
+      break if sheet.cell(index, 'A').blank?
+
+      runner_data = {
+          runner_name:      sheet.cell(index, 'A'),
+          surname:          sheet.cell(index, 'B'),
+          gender:           sheet.cell(index, 'D'),
+          dob:              sheet.cell(index, 'C').to_date.as_json,
+          club_id:          current_user.club_id || params[:club_id],
+          best_category_id: Category.find_by(category_name: sheet.cell(index, 'E')).id,
+          category_id:      Category.find_by(category_name: sheet.cell(index, 'F')).id,
+          category_valid:   (sheet.cell(index, 'G').to_date + 2.years).as_json
+      }.compact
+
+        Runner.get_runner(runner_data).update!(runner_data.slice(:best_category_id, :category_id, :category_valid, :gender, :club_id))
+
+        runner_id = Runner.get_runner(runner_data).id
+
+      competition_data = {
+         competition_name: sheet.cell(index, 'H'),
+         date: (sheet.cell(index, 'G').to_date).as_json,
+         location: sheet.cell(index, 'K'),
+         country: sheet.cell(index, 'L'),
+         distance_type: sheet.cell(index, 'I')
+      }
+
+      competition_id  = (
+        Competition.find_by(checksum: Competition.get_checksum(*competition_data.values_at(:competition_name, :date, :distance_type))) ||
+        Competition.create!(competition_data)
+      ).id
+
+      group_name = sheet.cell(index, 'J')
+
+      group_id = (Group.find_by(competition_id: competition_id, group_name: group_name) || Group.create!(competition_id: competition_id, group_name: group_name)).id
+
+      result_data = {
+        runner_id: runner_id,
+        group_id: group_id,
+        time: sheet.cell(index, 'M'),
+        place: sheet.cell(index, 'N')
+      }.compact
+
+      next if Result.find_by(result_data.slice(:runner_id, :group_id))
+
+      Result.create!(result_data)
+    end
   end
 
 

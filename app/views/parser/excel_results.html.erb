@@ -1,1 +1,16 @@
 <%= link_to "Descarcă fișierul Excel", "/rezultate.xlsx", class: "btn btn-primary" %>
+<br>
+<br>
+
+<%= form_tag excel_results_post_path, multipart: true  do %>
+<label for="id"></label>
+<% if admin_user? %>
+  <%= select_tag :club_id,  options_for_select(Club.all.map { |club| [club.club_name, club.id] }),{class: "form-select form-group form-control"} %>
+<% end %>
+<br>
+<%= file_field_tag :path %>
+
+<%= submit_tag "Încarcă", class: "btn btn-primary" %>
+<% end %>
+
+

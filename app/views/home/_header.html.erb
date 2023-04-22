@@ -36,7 +36,7 @@
                         <%=link_to "Adauga Competitie", new_competition_path, class: "dropdown-item" %>
                         <%=link_to "Adauga Grupa",      new_group_path,       class: "dropdown-item" %>
                         <%=link_to "Adauga Rezultat",   new_result_path,      class: "dropdown-item" %>
-                        <%=link_to "Adauga din fisier", root_path,            class: "dropdown-item" %>
+                        <%=link_to "Adauga din fisier", excel_results_path,   class: "dropdown-item" %>
                         <% if admin_user? %>
                         <%=link_to "Actualizeaza datele", parser_path,        class: "dropdown-item" %>
                         <% end %>
