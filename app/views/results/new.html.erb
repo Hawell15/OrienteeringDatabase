@@ -1,6 +1,6 @@
 <h1>Rezultat Nou</h1>
 <% if admin_user? || club_admin? %>
-<%= render 'form', runner: @runner %>
+<%= render 'form', result: @result %>
 <% else %>
     <h3> Nu ai drepturi pentru a adauga rezultat </h3>
 <% end %>

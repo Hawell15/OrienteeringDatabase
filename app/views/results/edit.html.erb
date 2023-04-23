@@ -4,3 +4,25 @@
 <% else %>
     <h3> Nu ai drepturi pentru a edita rezultate </h3>
 <% end %>
+
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+  var id = $('[id*="competition_id"]').val();
+  showCompetitionGroups(id);
+  var aaa = <%= @result.group_id.to_json %>;
+  console.log(aaa);
+  $('[id*="group_id"]').val(aaa);
+  var ida =  $('[id*="group_id"]').val();
+  console.log(ida);
+ setTimeout(function() {
+    $('[id*="group_id"]').val(aaa);
+    var ida =  $('[id*="group_id"]').val();
+    console.log(ida);
+    $('[id*="group_id"]').val(aaa);
+  }, 50);
+});
+
+</script>

@@ -18,7 +18,7 @@
     <% @form_group = form_group %>
     <div class="col">
         <%= form_group.label :competition_id ,'Competitia'%>
-        <%= form_group.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control"} %>
+        <%= form_group.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: result&.group&.competition_id || 2), {},{class: "form-select form-group form-control"} %>
     </div>
     <div class="col" id="group-data">
     </div>
@@ -32,10 +32,11 @@
         <%= form.number_field :place, placeholder: "Locul", class: "form-control"  %>
     </div>
     <div class="col">
-        <%= form.select :runner_id,  options_for_select(Runner.all.map { |runner| ["#{runner.runner_name} #{runner.surname}", runner.id] }), {},{class: "form-select form-group form-control"} %>
+        <%= form.select :runner_id, options_for_select(Runner.all.map { |runner| ["#{runner.runner_name} #{runner.surname}", runner.id] }, selected: result&.runner_id), {}, { class: "form-select form-group form-control" } %>
+
     </div>
     <div class="col">
-        <%= form.select :category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }), {},{class: "form-select form-group form-control"} %>
+        <%= form.select :category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] },selected: result&.category_id), {},{class: "form-select form-group form-control"} %>
     </div>
     <div class="col">
         <%= form.number_field :wre_points, placeholder: "WRE Puncte", class: "form-control"  %>
@@ -74,19 +75,7 @@ $('form[action="/results"]').submit(function(event) {
 $(document).ready(function() {
     $('#result_group_attributes_competition_id').on('change', function() {
         var id = $(this).val();
-        var url = '/groups.json?comp_id=' + id;
-
-        showHideNewCompetition();
-
-        $.get(url, function(data) {
-            var select = $('#result_group_id');
-            select.empty();
-
-            $.each(data, function(index, item) {
-                select.append('<option value="' + item.id + '">' + item.group_name + '</option>');
-            });
-            select.append('<option value>' + "Grupa Noua" + '</option>');
-        });
+        showCompetitionGroups(id);
     });
 });
 
@@ -112,6 +101,23 @@ function showHideNewGroup() {
     }
 }
 
+function showCompetitionGroups(id) {
+    var url = '/groups.json?comp_id=' + id;
+
+        showHideNewCompetition();
+
+        $.get(url, function(data) {
+            var select = $('#result_group_id');
+            select.empty();
+
+            $.each(data, function(index, item) {
+                select.append('<option value="' + item.id + '">' + item.group_name + '</option>');
+            });
+            select.append('<option value>' + "Grupa Noua" + '</option>');
+        });
+
+}
+
 function addGroup(type) {
     var html = "";
 
@@ -122,6 +128,7 @@ function addGroup(type) {
     }
 
     $('#group-data').replaceWith('<div class="col" id="group-data">' + html + '</div>');
+    console.log("aaa")
 }
 </script>
 <% end %>

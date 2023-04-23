@@ -32,7 +32,6 @@ class ResultsController < ApplicationController
 
   # POST /results or /results.json
   def create
-    byebug
     if result_params.dig("group_attributes", "group_name")
       @result = Result.new(result_params)
     else
@@ -52,8 +51,12 @@ class ResultsController < ApplicationController
 
   # PATCH/PUT /results/1 or /results/1.json
   def update
+    params = result_params
+    params["group_attributes"][:competition_id] = params["group_attributes"]["competition_id"].presence || Competition.create(params["group_attributes"]["competition_attributes"]).id
+    params[:group_id] ||= Group.create!(result_params["group_attributes"].except("competition_id")).id
+
     respond_to do |format|
-      if @result.update(result_params)
+      if @result.update(params.except("group_attributes"))
         format.html { redirect_to result_url(@result), notice: "Result was successfully updated." }
         format.json { render :show, status: :ok, location: @result }
       else
