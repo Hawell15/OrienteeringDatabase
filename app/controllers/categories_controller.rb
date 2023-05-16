@@ -62,11 +62,10 @@ class CategoriesController < ApplicationController
   end
 
   def count_categories
-    byebug
     @updated_runners = Runner.where('category_valid < ?', Date.today) || []
     @updated_runners.each do |runner|
       next if runner.category_id == 10
-      category_valid = "2100-01-01" if runner.category_id = 9
+      category_valid = "2100-01-01" if runner.category_id == 9
       Result.create(
         runner: runner,
         group_id: 1,
@@ -89,15 +88,15 @@ class CategoriesController < ApplicationController
              .map { |id, group| group.first }
 
 
-    # runner_query.each do |runner|
-    #   runner.update!(
-    #     category_id:      runner.min_category_id,
-    #     category_valid:   (runner.max_result_date.to_date + 2.years).as_json,
-    #     best_category_id: [runner.min_category_id, runner.best_category_id].min
-    #   )
-    # end
+    runner_query.each do |runner|
+      runner.update!(
+        category_id:      runner.min_category_id,
+        category_valid:   (runner.max_result_date.to_date + 2.years).as_json,
+        best_category_id: [runner.min_category_id, runner.best_category_id].min
+      )
+    end
 
-    # @updated_runners += runner_query
+    @updated_runners += runner_query
   end
 
   private

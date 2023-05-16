@@ -4,7 +4,7 @@
     <% @form_group = form_group %>
     <div class="col">
         <%= form_group.label :competition_id ,'Competitia'%>
-        <%= form_group.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 2), {},{class: "form-select form-group form-control"} %>
+        <%= form_group.select :competition_id,  options_for_select(Competition.all.map { |comp| [comp.competition_name, comp.id] } + [["Competitie Noua", nil]], selected: 0), {},{class: "form-select form-group form-control"} %>
     </div>
     <div class="col" id="group-data">
     </div>
@@ -13,36 +13,13 @@
 <div id="new-competition"></div>
 <br>
 <% end %>
-<div class="row">
-    <div class="col">
-        <%= form.number_field :place, placeholder: "Locul", class: "form-control"  %>
-    </div>
-    <div class="col">
-        <%= form.select :runner_id,  options_for_select(Runner.all.map { |runner| ["#{runner.runner_name} #{runner.surname}", runner.id] }), {},{class: "form-select form-group form-control"} %>
-    </div>
-    <div class="col">
-        <%= form.select :category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }), {},{class: "form-select form-group form-control"} %>
-    </div>
-    <div class="col">
-        <%= form.number_field :wre_points, placeholder: "WRE Puncte", class: "form-control"  %>
-    </div>
+<div id="result-details">
+
+</div>
+<div id="date-details">
 </div>
 <br>
-<div class="row">
-    <div class="col" style="display:none">
-        <%= form.number_field :time, placeholder: "Timpul", class: "form-control" %>
-    </div>
-    <div class="col">
-        <%= number_field_tag :hours, nil,  placeholder: "Ore", class: "form-control" %>
-    </div>
-    <div class="col">
-        <%= number_field_tag :minutes, nil, placeholder: "Minute", class: "form-control"  %>
-    </div>
-    <div class="col">
-        <%= number_field_tag :seconds, nil, placeholder: "Secunde", class: "form-control"  %>
-    </div>
-</div>
-<br>
+
 <script>
 $('form[action="/results"]').submit(function(event) {
     event.preventDefault();
@@ -73,9 +50,6 @@ $(document).ready(function() {
 });
 
 function showHideNewCompetition() {
-    $('#runner_results_attributes_category_id').parent().remove()
-    $('#runner_results_attributes_runner_id').parent().remove()
-
     var value = $('[id*="competition_id"]').val();
     var html = "";
 
@@ -85,6 +59,8 @@ function showHideNewCompetition() {
     } else {
         addGroup("select");
     }
+    console.log(value);
+    toggleOptions();
 
     $('#new-competition').replaceWith('<div id="new-competition">' + html + '</div>');
 }
@@ -108,4 +84,16 @@ function addGroup(type) {
 
     $('#group-data').replaceWith('<div class="col" id="group-data">' + html + '</div>');
 }
+
+function toggleOptions() {
+     $('#result-details').empty();
+     $('#date-details').empty();
+
+    if ($('[id*="competition_id"]').val() > 1 || $('[id*="competition_id"]').val() == '') {
+        $('#result-details').append('<%= j render partial: "result_details", :locals => { :form => @form} %>');
+    } else {
+        $('#date-details').append('<%= j render partial: "date_details", :locals => { :form => @form} %>');
+    }
+  }
+
 </script>

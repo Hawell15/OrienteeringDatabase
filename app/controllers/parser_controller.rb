@@ -5,7 +5,6 @@ class ParserController < ApplicationController
   def wre_ids
     return unless admin_user?
 
-    time = Time.now
     options = [{ gender: "MEN", type: "F" }, { gender:"MEN", type:"FS" }, { gender:"WOMEN", type:"F" }, { gender:"WOMEN", type:"FS" }]
     threads = []
     runners = []
@@ -38,11 +37,18 @@ class ParserController < ApplicationController
     threads = []
     new_ids.each do |id|
       threads << Thread.new do
-        url = "https://eventor.orienteering.org/Athletes/Details/#{id}"
-        response = Nokogiri::HTML(RestClient.get(url).body)
+        # url = "https://eventor.orienteering.org/Athletes/Details/#{id}"
+
+        response = Nokogiri::HTML(RestClient.post(
+          'https://eventor.orienteering.org/Athletes',
+          {
+            IofId: id
+          }
+        ))
+        # response = Nokogiri::HTML(RestClient.get(url).body)
         runner = new_runners.detect { |rn| rn[:wre_id] == id.to_i }
-        runner[:dob]      = "#{response.at_css("tr:contains('Year of birth') td.athleteFactsInfo").text}-01-01"
-        # runner[:checksum] = (Digest::SHA2.new << "#{runner[:runner_name]}-#{runner[:surname]}-#{runner[:dob].to_date.year}").to_s
+        # runner[:dob]      = "#{response.at_css("tr:contains('Year of birth') td.athleteFactsInfo").text}-01-01"
+        runner[:dob]      = "#{response.at_css("div#athleteList tbody tr").css("td")[2].text}-01-01"
       end
     end
 
@@ -54,12 +60,11 @@ class ParserController < ApplicationController
       Runner.get_runner(runner).update(runner.slice(:forest_wre_rang, :sprint_wre_rang, :forest_wre_place, :sprint_wre_place, :wre_id))
     end
     wre_results
-    @time = Time.now - time
   end
 
   def excel_results
     return unless params[:path]
-    return unless admin_user? || club_admin?
+    return unless admin_user? && club_admin?
 
     path = params[:path].tempfile.path
 
@@ -206,11 +211,9 @@ class ParserController < ApplicationController
 
         runner.update!(hash)
       end
-    rescue => error
-      byebug
     end
   ensure
-    browser.close
+    browser.close if browser
   end
 
   private

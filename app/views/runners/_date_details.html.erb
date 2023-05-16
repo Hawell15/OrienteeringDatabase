@@ -1,0 +1,6 @@
+<div class="row">
+    <div class="col">
+        <%= form.label :date ,'Data'%>
+        <%= form.date_select :date, {order: [:month, :day, :year], use_month_numbers: true} , class: "date-select" %>
+    </div>
+</div>

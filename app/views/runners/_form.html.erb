@@ -48,15 +48,31 @@
 <div class="row">
     <div class="col">
         <%= form.label :gender ,'Titlul Sportiv'%>
-        <%= form.select :best_category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }), {},{class: "form-select form-group form-control"} %>
+        <%= form.select :best_category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }, selected: 10), {},{class: "form-select form-group form-control"} %>
     </div>
     <div class="col">
         <%= form.label :gender ,'Categoria Sportiva'%>
-        <%= form.select :category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }), {},{class: "form-select form-group form-control", onChange: "result_visibility()"} %>
+        <%= form.select :category_id,  options_for_select(Category.all.map { |category| [category.category_name, category.id] }, selected: 10), {},{class: "form-select form-group form-control", onChange: "addCompetition()"} %>
     </div>
+    <div id="competition-id">
     <%= form.fields_for :results_attributes do |result_form| %>
-       <%= render partial: 'results/form2', locals: { form: result_form } %>
+       <% form_html = j(render(partial: 'results_form', locals: { form: result_form })) %>
+<script>
+    var formHtml = '<%= form_html %>';
+
+    function addCompetition() {
+        if ($('#runner_category_id').val() == '10') {
+            $('#competition-id').empty();
+        } else {
+            $('#competition-id').append(formHtml);
+            setTimeout(function() {
+            $('[id*=group_attributes_competition_id]').trigger('change');
+            }, 50);
+        }
+    }
+</script>
      <% end %>
+ </div>
 </div>
 
 <div class="actions">

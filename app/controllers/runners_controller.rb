@@ -1,6 +1,4 @@
 class RunnersController < ApplicationController
-  require "#{Rails.root}/app/data/runner_data.rb"
-
   before_action :set_runner, only: %i[ show edit update destroy ]
 
   # GET /runners or /runners.json
@@ -38,16 +36,49 @@ class RunnersController < ApplicationController
 
   # POST /runners or /runners.json
   def create
-    @runner = Runner.new(runner_params)
+    params = runner_params
+    competition_params = params.dig("results_attributes", "group_attributes", "competition_attributes")
+    group_params = params.dig("results_attributes", "group_attributes").except("competition_attributes")
+
+    if competition_params
+      group_params[:competition_id] = Competition.create!(competition_params).id
+    end
+
+
+    group_params = params.dig("results_attributes", "group_attributes").except("competition_attributes")
+
+    if group_params[:group_name]
+
+    end
+
+
+    if params["results_attributes"]
+      result_params = params["results_attributes"].except("group_attributes")
+
+      params[:category_valid] = if result_params['date(2i)']
+        ("#{result_params['date(1i)']}-#{result_params['date(2i)']}-#{result_params['date(3i)']}".to_date + 2.years).as_json
+      else
+         (Competition.find(params.dig("results_attributes", "group_attributes", "competition_id")).date + 2.years).as_json
+      end
+    end
+
+    @runner = Runner.new(params.except("results_attributes"))
+
+
+    return
+    result_params[:runner_id] = @runner.id
+
+    Result.create!(result_params.except("group_attributes"))
+
 
     respond_to do |format|
-      if @runner.save
-        format.html { redirect_to runner_url(@runner), notice: "Runner was successfully created." }
-        format.json { render :show, status: :created, location: @runner }
-      else
+      format.html { redirect_to runner_url(@runner), notice: "Runner was successfully created." }
+      format.json { render :show, status: :created, location: @runner }
+    end
+  rescue
+    respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @runner.errors, status: :unprocessable_entity }
-      end
     end
   end
 
@@ -86,7 +117,7 @@ class RunnersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def runner_params
-      params.require(:runner).permit(:id, :runner_name, :surname, :dob, :club_id, :gender, :wre_id, :best_category_id, :category_id, :category_valid, :sprint_wre_rang, :sprint_wre_place, :forest_wre_place, :forest_wre_rang, :checksum, results_attributes:[:place, :time, :group_id , :wre_points,group_attributes: [:id, :group_name, :competition_id, competition_attributes: [:id, :competition_name, :date, :location, :country, :distance_type, :wre_id]]])
+      params.require(:runner).permit(:id, :runner_name, :surname, :dob, :club_id, :gender, :wre_id, :best_category_id, :category_id, :category_valid, :sprint_wre_rang, :sprint_wre_place, :forest_wre_place, :forest_wre_rang, :checksum, results_attributes:[:date, :place, :time, :group_id , :wre_points,group_attributes: [:id, :group_name, :competition_id, competition_attributes: [:id, :competition_name, :date, :location, :country, :distance_type, :wre_id]]])
     end
 
   def show_wins(one, two)
