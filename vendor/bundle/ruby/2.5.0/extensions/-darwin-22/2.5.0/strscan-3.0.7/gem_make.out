@@ -1,0 +1,58 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/strscan-3.0.7/ext/strscan
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.5.9/lib/ruby/site_ruby/2.5.0 -r ./siteconf20231207-89344-14u49sm.rb extconf.rb
+checking for onig_region_memsize() in ruby.h... yes
+checking for rb_reg_onig_match() in ruby.h... no
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/strscan-3.0.7/ext/strscan
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/strscan-3.0.7/ext/strscan
+make "DESTDIR="
+compiling strscan.c
+strscan.c:244:26: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+        keyword_ids[0] = rb_intern("fixed_anchor");
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+strscan.c:244:26: note: '{' token is here
+        keyword_ids[0] = rb_intern("fixed_anchor");
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+strscan.c:244:26: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+        keyword_ids[0] = rb_intern("fixed_anchor");
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+strscan.c:244:26: note: ')' token is here
+        keyword_ids[0] = rb_intern("fixed_anchor");
+                         ^~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+strscan.c:554:18: warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+    OnigPosition result = match(reg, str, regs, args);
+                 ^
+strscan.c:626:22: warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+        OnigPosition ret = rb_reg_onig_match(pattern,
+                     ^
+strscan.c:1531:25: warning: mixing declarations and code is incompatible with standards before C99 [-Wdeclaration-after-statement]
+    named_captures_data data;
+                        ^
+5 warnings generated.
+linking shared-object strscan.bundle
+ld: warning: -multiply_defined is obsolete
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/strscan-3.0.7/ext/strscan
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 strscan.bundle ./.gem.20231207-89344-1mda9qj

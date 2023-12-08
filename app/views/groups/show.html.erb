@@ -42,6 +42,9 @@
                     <%= link_to 'Sportiv'%>
                 </th>
                 <th>
+                    <%= link_to 'Categoria actuală'%>
+                </th>
+                <th>
                     <%= link_to 'Timpul'%>
                 </th>
                 <th>
@@ -66,6 +69,9 @@
                 </td>
                 <td>
                     <%= link_to "#{result.runner.runner_name} #{result.runner.surname}", result.runner  %>
+                </td>
+                 <td>
+                    <%= result.runner.category.category_name %>
                 </td>
                 <td>
                     <%= Time.at(result.time).utc.strftime('%H:%M:%S') %>

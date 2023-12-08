@@ -1,0 +1,505 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.7.0/gems/io-wait-0.3.0/ext/io/wait
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.7.4/lib/ruby/2.7.0 -r ./siteconf20230526-8628-1e5l86p.rb extconf.rb
+checking for rb_io_wait()... no
+checking for sys/ioctl.h... yes
+checking for FIONREAD in sys/ioctl.h,sys/ioctl.h... yes
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.7.0/gems/io-wait-0.3.0/ext/io/wait
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.7.0/gems/io-wait-0.3.0/ext/io/wait
+make "DESTDIR="
+compiling wait.c
+wait.c:262:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("r"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:262:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("r"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:262:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("r"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:262:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("r"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:265:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("read"))) {
+                       ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:265:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("read"))) {
+                       ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:265:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("read"))) {
+                       ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:265:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("read"))) {
+                       ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:268:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("readable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:268:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("readable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:268:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("readable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:268:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("readable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:271:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("w"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:271:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("w"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:271:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("w"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:271:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("w"))) {
+                       ^~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:274:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("write"))) {
+                       ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:274:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("write"))) {
+                       ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:274:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("write"))) {
+                       ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:274:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("write"))) {
+                       ^~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:277:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:277:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:277:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:277:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:280:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("rw"))) {
+                       ^~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:280:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("rw"))) {
+                       ^~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:280:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("rw"))) {
+                       ^~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:280:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("rw"))) {
+                       ^~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:283:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("read_write"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:283:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("read_write"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:283:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("read_write"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:283:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("read_write"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:286:24: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("readable_writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:286:24: note: '{' token is here
+    if (mode == ID2SYM(rb_intern("readable_writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1832:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:286:24: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    if (mode == ID2SYM(rb_intern("readable_writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1837:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+wait.c:286:24: note: ')' token is here
+    if (mode == ID2SYM(rb_intern("readable_writable"))) {
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:1847:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:414:29: note: expanded from macro 'ID2SYM'
+#define ID2SYM(x) RB_ID2SYM(x)
+                            ^
+/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/ruby.h:409:33: note: expanded from macro 'RB_ID2SYM'
+#define RB_ID2SYM(x) (rb_id2sym(x))
+                                ^
+18 warnings generated.
+linking shared-object io/wait.bundle
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.7.0/gems/io-wait-0.3.0/ext/io/wait
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 wait.bundle ./.gem.20230526-8628-1rlk2ey/io

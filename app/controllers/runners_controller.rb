@@ -3,9 +3,11 @@ class RunnersController < ApplicationController
 
   # GET /runners or /runners.json
   def index
-    if params[:category]
-       @runners = Runner.all.all.where(category_id: params[:category])
-     else
+    if params[:wre]
+      @runners = Runner.all.where.not(wre_id: nil)
+    elsif params[:category]
+       @runners = Runner.all.where(category_id: params[:category])
+    else
       @runners = Runner.all
     end
 
@@ -38,44 +40,39 @@ class RunnersController < ApplicationController
   def create
     params = runner_params
     competition_params = params.dig("results_attributes", "group_attributes", "competition_attributes")
-    group_params = params.dig("results_attributes", "group_attributes").except("competition_attributes")
+    group_params = params.dig("results_attributes", "group_attributes")&.except("competition_attributes")
+    result_params = params["results_attributes"]&.except("group_attributes") || {}
 
     if competition_params
       group_params[:competition_id] = Competition.create!(competition_params).id
     end
 
-
-    group_params = params.dig("results_attributes", "group_attributes").except("competition_attributes")
-
-    if group_params[:group_name]
-
+    if group_params && group_params[:group_name]
+      result_params[:group_id] = Group.create!(group_params).id
     end
 
-
     if params["results_attributes"]
-      result_params = params["results_attributes"].except("group_attributes")
-
       params[:category_valid] = if result_params['date(2i)']
         ("#{result_params['date(1i)']}-#{result_params['date(2i)']}-#{result_params['date(3i)']}".to_date + 2.years).as_json
       else
-         (Competition.find(params.dig("results_attributes", "group_attributes", "competition_id")).date + 2.years).as_json
+         (Competition.find(group_params["competition_id"]).date + 2.years).as_json
       end
     end
 
-    @runner = Runner.new(params.except("results_attributes"))
+    @runner = Runner.create!(params.except("results_attributes"))
+    params.delete(:id) if params[:id].blank?
 
-
-    return
     result_params[:runner_id] = @runner.id
+    result_params[:category_id] = params[:category_id]
 
-    Result.create!(result_params.except("group_attributes"))
-
+    Result.create(result_params)
 
     respond_to do |format|
       format.html { redirect_to runner_url(@runner), notice: "Runner was successfully created." }
       format.json { render :show, status: :created, location: @runner }
     end
-  rescue
+  rescue => error
+    byebug
     respond_to do |format|
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @runner.errors, status: :unprocessable_entity }
@@ -123,9 +120,7 @@ class RunnersController < ApplicationController
   def show_wins(one, two)
     @runner_one = Runner.find(one)
     @runner_two = Runner.find(two)
-    # @index_array1 = result_index_array(@runner_one.results)
-    # @index_array2 = result_index_array(@runner_two.results)
-
+    #
     @runner_one_wins = 0
     @runner_two_wins = 0
     @ties            = 0

@@ -1,0 +1,16 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/racc-1.7.3/ext/racc/cparse
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.5.9/lib/ruby/site_ruby/2.5.0 -r ./siteconf20231207-89344-1phvczg.rb extconf.rb
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/racc-1.7.3/ext/racc/cparse
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/racc-1.7.3/ext/racc/cparse
+make "DESTDIR="
+compiling cparse.c
+linking shared-object racc/cparse.bundle
+ld: warning: -multiply_defined is obsolete
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/racc-1.7.3/ext/racc/cparse
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 cparse.bundle ./.gem.20231207-89344-17wt8v/racc

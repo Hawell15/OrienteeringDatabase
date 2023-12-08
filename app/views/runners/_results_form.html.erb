@@ -21,13 +21,13 @@
 <br>
 
 <script>
-$('form[action="/results"]').submit(function(event) {
+$('form[action="/runners"]').submit(function(event) {
     event.preventDefault();
     console.log("dsa");
     var hours = parseInt($('#hours').val()) || 0;
     var minutes = parseInt($('#minutes').val()) || 0;
     var seconds = parseInt($('#seconds').val()) || 0;
-    $('#result_time').val(hours * 3600 + minutes * 60 + seconds);
+    $('#runner_results_attributes_time').val(hours * 3600 + minutes * 60 + seconds);
     $(this).unbind('submit').submit();
 });
 $(document).ready(function() {

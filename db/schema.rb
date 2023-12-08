@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2023_04_19_193100) do
   create_table "runners", force: :cascade do |t|
     t.string "runner_name"
     t.string "surname"
-    t.date "dob", default: "2023-05-13"
+    t.date "dob", default: "2023-06-03"
     t.integer "club_id", default: 0
     t.string "gender"
     t.integer "wre_id"

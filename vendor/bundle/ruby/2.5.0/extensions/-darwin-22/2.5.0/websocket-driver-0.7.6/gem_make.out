@@ -1,0 +1,16 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.5.9/lib/ruby/site_ruby/2.5.0 -r ./siteconf20231207-89344-apwynw.rb extconf.rb
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make "DESTDIR="
+compiling websocket_mask.c
+linking shared-object websocket_mask.bundle
+ld: warning: -multiply_defined is obsolete
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/websocket-driver-0.7.6/ext/websocket-driver
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 websocket_mask.bundle ./.gem.20231207-89344-6gw6do

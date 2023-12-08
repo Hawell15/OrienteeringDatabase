@@ -58,6 +58,46 @@ module ApplicationHelper
   end
 
   def get_rang_percents(rang)
-    rang_array.detect { |row| row.first < rang }.last
+    return [0, {}] if rang < 0.5
+
+    rang_array.detect { |row| row.first < rang }.last rescue byebug
+  end
+
+  def group_rang_count(group)
+    runner_ids = group.results.order(:place).limit(12).pluck(:runner_id)
+    rang       = Runner.joins(:category).where(id: runner_ids).sum('categories.points')
+    group.update!(rang: rang)
+
+    winner_time = group.results.order(:place).first.time
+    clasa       = group.clasa
+
+    percent_hash = get_rang_percents(rang).map do |k, v|
+      case clasa
+      when "MSRM", "CMSRM", "Seniori"
+        [k, v] if [4, 5, 6].include?(k)
+      when "Juniori"
+        [k, v] if [7, 8, 9].include?(k)
+      end
+    end.compact.to_h
+
+
+    time_hash = percent_hash.transform_values { |v| v * winner_time / 100 }
+
+
+    group.results.each do |res|
+      time = res.time
+      place =  res.place
+      clasa[/MSRM/] rescue byebug
+
+      category_id = if clasa == "MSRM" && place == 1
+        2
+      elsif clasa[/MSRM/] &&(1..3).include?(place)
+        3
+      else
+        time_hash.detect  { |k,v| v >= time }&.first || 10
+      end
+
+       res.update!(category_id: category_id)
+    end
   end
 end

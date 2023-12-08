@@ -1,0 +1,162 @@
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/stringio-3.0.6/ext/stringio
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/bin/ruby -I /Users/romanciobanu/.rvm/rubies/ruby-2.5.9/lib/ruby/site_ruby/2.5.0 -r ./siteconf20231207-89344-1uo5vd8.rb extconf.rb
+checking for rb_io_extract_modeenc() in ruby/io.h... no
+creating Makefile
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/stringio-3.0.6/ext/stringio
+make "DESTDIR=" clean
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/stringio-3.0.6/ext/stringio
+make "DESTDIR="
+compiling stringio.c
+stringio.c:1109:33: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE c = rb_funcallv(self, rb_intern("getc"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+stringio.c:1109:33: note: '{' token is here
+    VALUE c = rb_funcallv(self, rb_intern("getc"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+stringio.c:1109:33: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE c = rb_funcallv(self, rb_intern("getc"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+stringio.c:1109:33: note: ')' token is here
+    VALUE c = rb_funcallv(self, rb_intern("getc"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+stringio.c:1124:33: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE c = rb_funcallv(self, rb_intern("getbyte"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+stringio.c:1124:33: note: '{' token is here
+    VALUE c = rb_funcallv(self, rb_intern("getbyte"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+stringio.c:1124:33: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE c = rb_funcallv(self, rb_intern("getbyte"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+stringio.c:1124:33: note: ')' token is here
+    VALUE c = rb_funcallv(self, rb_intern("getbyte"), 0, 0);
+                                ^~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+stringio.c:1405:39: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE line = rb_funcallv_kw(self, rb_intern("gets"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                      ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1405:39: note: '{' token is here
+    VALUE line = rb_funcallv_kw(self, rb_intern("gets"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                      ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1405:39: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE line = rb_funcallv_kw(self, rb_intern("gets"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                      ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1405:39: note: ')' token is here
+    VALUE line = rb_funcallv_kw(self, rb_intern("gets"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                      ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1673:38: warning: '(' and '{' tokens introducing statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE val = rb_funcallv_kw(self, rb_intern("read"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                     ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:23: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                      ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1673:38: note: '{' token is here
+    VALUE val = rb_funcallv_kw(self, rb_intern("read"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                     ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1740:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    {                                                   \
+    ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1673:38: warning: '}' and ')' tokens terminating statement expression appear in different macro expansion contexts [-Wcompound-token-split-by-macro]
+    VALUE val = rb_funcallv_kw(self, rb_intern("read"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                     ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:24: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                       ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1745:5: note: expanded from macro 'RUBY_CONST_ID_CACHE'
+    }
+    ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+stringio.c:1673:38: note: ')' token is here
+    VALUE val = rb_funcallv_kw(self, rb_intern("read"), argc, argv, RB_PASS_CALLED_KEYWORDS);
+                                     ^~~~~~~~~~~~~~~~~
+/Users/romanciobanu/.rvm/rubies/ruby-2.5.9/include/ruby-2.5.0/ruby/ruby.h:1755:56: note: expanded from macro 'rb_intern'
+        __extension__ (RUBY_CONST_ID_CACHE((ID), (str))) : \
+                                                       ^
+stringio.c:31:75: note: expanded from macro 'rb_funcallv_kw'
+# define rb_funcallv_kw(recv, mid, arg, argv, kw_splat) rb_funcallv(recv, mid, arg, argv)
+                                                                          ^~~
+8 warnings generated.
+linking shared-object stringio.bundle
+ld: warning: -multiply_defined is obsolete
+
+current directory: /Users/romanciobanu/Documents/rails/licenta/orientare/vendor/bundle/ruby/2.5.0/gems/stringio-3.0.6/ext/stringio
+make "DESTDIR=" install
+/Users/romanciobanu/homebrew/opt/coreutils/bin/ginstall -c -m 0755 stringio.bundle ./.gem.20231207-89344-111vx0p

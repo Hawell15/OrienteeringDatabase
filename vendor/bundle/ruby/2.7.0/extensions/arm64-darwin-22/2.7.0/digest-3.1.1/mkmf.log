@@ -1,0 +1,35 @@
+have_header: checking for CommonCrypto/CommonDigest.h... -------------------- yes
+
+"gcc -o conftest -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/arm64-darwin22 -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/backward -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0 -I. -I/Users/romanciobanu/homebrew/opt/postgresql@10/include -I/Users/romanciobanu/homebrew/opt/libyaml/include -I/Users/romanciobanu/homebrew/opt/libksba/include -I/Users/romanciobanu/homebrew/opt/readline/include -I/Users/romanciobanu/homebrew/opt/zlib/include -I/Users/romanciobanu/homebrew/opt/openssl@1.1/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -g -O2 -fno-common -pipe conftest.c  -L. -L/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/lib -L/Users/romanciobanu/homebrew/opt/libyaml/lib -L/Users/romanciobanu/homebrew/opt/libksba/lib -L/Users/romanciobanu/homebrew/opt/readline/lib -L/Users/romanciobanu/homebrew/opt/zlib/lib -L/Users/romanciobanu/homebrew/opt/openssl@1.1/lib -L. -L/Users/romanciobanu/homebrew/opt/postgresql@10/lib -fstack-protector-strong -L/Users/romanciobanu/homebrew/opt/libyaml/lib -L/Users/romanciobanu/homebrew/opt/libksba/lib -L/Users/romanciobanu/homebrew/opt/readline/lib -L/Users/romanciobanu/homebrew/opt/zlib/lib -L/Users/romanciobanu/homebrew/opt/openssl@1.1/lib  -m64   -lruby.2.7   "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return !!argv[argc];
+6: }
+/* end */
+
+"gcc -E -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/arm64-darwin22 -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/backward -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0 -I. -I/Users/romanciobanu/homebrew/opt/postgresql@10/include -I/Users/romanciobanu/homebrew/opt/libyaml/include -I/Users/romanciobanu/homebrew/opt/libksba/include -I/Users/romanciobanu/homebrew/opt/readline/include -I/Users/romanciobanu/homebrew/opt/zlib/include -I/Users/romanciobanu/homebrew/opt/openssl@1.1/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -g -O2 -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <CommonCrypto/CommonDigest.h>
+/* end */
+
+--------------------
+
+have_header: checking for sys/cdefs.h... -------------------- yes
+
+"gcc -E -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/arm64-darwin22 -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0/ruby/backward -I/Users/romanciobanu/.rvm/rubies/ruby-2.7.4/include/ruby-2.7.0 -I. -I/Users/romanciobanu/homebrew/opt/postgresql@10/include -I/Users/romanciobanu/homebrew/opt/libyaml/include -I/Users/romanciobanu/homebrew/opt/libksba/include -I/Users/romanciobanu/homebrew/opt/readline/include -I/Users/romanciobanu/homebrew/opt/zlib/include -I/Users/romanciobanu/homebrew/opt/openssl@1.1/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -g -O2 -fno-common -pipe  conftest.c -o conftest.i"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <sys/cdefs.h>
+/* end */
+
+--------------------
+

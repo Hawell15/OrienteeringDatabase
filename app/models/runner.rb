@@ -23,7 +23,7 @@ class Runner < ApplicationRecord
 
     return runner if runner
 
-    Runner.create!(options)
+    runner = Runner.create!(options)
   end
 
   def get_checksum(runner_name, surname, dob)
@@ -42,8 +42,8 @@ class Runner < ApplicationRecord
   end
 
   def self.get_runner_by_matching(options)
-    threshold = 0.8
-    runners = Runner.all.map do |runner|
+    threshold = 0.95
+    runners = Runner.where(gender: options[:gender]).all.map do |runner|
       name_threshold = Text::Levenshtein.distance(runner.runner_name.downcase, options[:runner_name].downcase) / runner.runner_name.length.to_f
       surname_threshold = Text::Levenshtein.distance(runner.surname.downcase, options[:surname].downcase) / runner.surname.length.to_f
       next nil unless (name_threshold + surname_threshold)/2 < (1 -threshold)

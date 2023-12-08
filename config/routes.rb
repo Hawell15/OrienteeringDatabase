@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   post 'parser/excel_results', as: 'excel_results_post'
   post 'groups/count_rang', as: 'count_rang'
   get 'parser/fos_results', as: 'fos_results'
-  get 'categories/count_categories'
+  get 'categories/count_categories', as: 'count_categories'
 
   # get 'home/wre_results_women'
   resources :categories

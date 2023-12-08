@@ -23,6 +23,8 @@ gem "watir"
 gem "csv"
 gem 'open-uri'
 gem 'roo'
+gem 'openai'
+gem 'nokogiri', '= 1.12.5'
 
 gem 'text'
 
